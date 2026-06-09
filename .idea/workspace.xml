@@ -1,33 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f301eecf-1031-4ca9-bc76-946b554a03f5" name="Changes" comment="梯度畫圖">
-      <change afterPath="$PROJECT_DIR$/lab10_matplotlib_depth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab11_regression_generated_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab12.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab13_sort_individual_var.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab14_reshape.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab15_diabetes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab16_iris_explain.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab17.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab18_logistic.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab19_logistic2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab20_logistic3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab21_iris.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab22.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab22_classifiers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab23_svc1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab24_classifiers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab25_iris_pca.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2_matplotlib_review.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab3_change_intercept.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab4_change_coefficient.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab5_regression1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab6_regression2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab7_matplotlib_review2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab8_list_array.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab9_matplotlib_review3.py" afterDir="false" />
+    <list default="true" id="f301eecf-1031-4ca9-bc76-946b554a03f5" name="Changes" comment="2026-06-09 09:00~16:39">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab25_iris_pca.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab25_iris_pca.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +51,7 @@
     "Python.lab22_classifiers.executor": "Run",
     "Python.lab23_svc1.executor": "Run",
     "Python.lab24_classifiers.executor": "Run",
+    "Python.lab25_iris_pca.executor": "Run",
     "Python.lab2_liner_regression.executor": "Run",
     "Python.lab2_matplotlib_review (1).executor": "Run",
     "Python.lab3_change_intercept.executor": "Run",
@@ -263,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780909279455</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="2026-06-09 09:00~16:39">
+      <option name="closed" value="true" />
+      <created>1780994372573</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1780994372573</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -280,7 +265,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="check version" />
     <MESSAGE value="梯度畫圖" />
-    <option name="LAST_COMMIT_MESSAGE" value="梯度畫圖" />
+    <MESSAGE value="2026-06-09 09:00~16:39" />
+    <option name="LAST_COMMIT_MESSAGE" value="2026-06-09 09:00~16:39" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
