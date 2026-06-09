@@ -2,8 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f301eecf-1031-4ca9-bc76-946b554a03f5" name="Changes" comment="梯度畫圖">
+      <change afterPath="$PROJECT_DIR$/lab10_matplotlib_depth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab11_regression_generated_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab12.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab13_sort_individual_var.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab14_reshape.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab15_diabetes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab16_iris_explain.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab17.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab18_logistic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab19_logistic2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab20_logistic3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab21_iris.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab22.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab22_classifiers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab23_svc1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab24_classifiers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab25_iris_pca.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2_matplotlib_review.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab3_change_intercept.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab4_change_coefficient.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5_regression1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab6_regression2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab7_matplotlib_review2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab8_list_array.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab9_matplotlib_review3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab1_explain_gradient.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab1_explain_gradient.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +48,9 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="3EpvtY8oNEw8guMAm8nWbzGnm1M" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -32,16 +59,47 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.lab0_env_check.executor": "Run",
+    "Python.lab10_matplotlib_depth.executor": "Run",
+    "Python.lab11_regression_generated_data.executor": "Run",
+    "Python.lab12.executor": "Run",
+    "Python.lab13_sort_individual_var.executor": "Run",
+    "Python.lab14_reshape.executor": "Run",
+    "Python.lab15_diabetes.executor": "Run",
+    "Python.lab16_iris_explain.executor": "Run",
+    "Python.lab17.executor": "Run",
+    "Python.lab18_logistic2.executor": "Run",
     "Python.lab1_explain_gradient.executor": "Run",
+    "Python.lab20_logistic3.executor": "Run",
+    "Python.lab21_iris.executor": "Run",
+    "Python.lab22.executor": "Run",
+    "Python.lab22_classifiers.executor": "Run",
+    "Python.lab23_svc1.executor": "Run",
+    "Python.lab24_classifiers.executor": "Run",
+    "Python.lab2_liner_regression.executor": "Run",
+    "Python.lab2_matplotlib_review (1).executor": "Run",
+    "Python.lab3_change_intercept.executor": "Run",
+    "Python.lab4_change_coefficient.executor": "Run",
+    "Python.lab5_regression1.executor": "Run",
+    "Python.lab6_regression2.executor": "Run",
+    "Python.lab7_matplotlib_review2.executor": "Run",
+    "Python.lab8_list_array.executor": "Run",
+    "Python.lab9_matplotlib_review3.executor": "Run",
+    "Python.log18_logistic.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Admin/PycharmProjects/PythonProject/PYKT2026Jun08Labs",
     "settings.editor.selected.configurable": "terminal"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.lab1_explain_gradient">
-    <configuration name="lab0_env_check" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.lab25_iris_pca">
+    <configuration name="lab22" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -55,7 +113,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab0_env_check.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab22.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -64,7 +122,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab1_explain_gradient" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab22_classifiers" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -78,7 +136,76 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab1_explain_gradient.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab22_classifiers.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lab23_svc1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYKT2026Jun08Labs" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab23_svc1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lab24_classifiers" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYKT2026Jun08Labs" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab24_classifiers.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lab25_iris_pca" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYKT2026Jun08Labs" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab25_iris_pca.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -89,8 +216,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.lab1_explain_gradient" />
-        <item itemvalue="Python.lab0_env_check" />
+        <item itemvalue="Python.lab25_iris_pca" />
+        <item itemvalue="Python.lab24_classifiers" />
+        <item itemvalue="Python.lab23_svc1" />
+        <item itemvalue="Python.lab22_classifiers" />
+        <item itemvalue="Python.lab22" />
       </list>
     </recent_temporary>
   </component>
@@ -125,7 +255,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780901793063</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="梯度畫圖">
+      <option name="closed" value="true" />
+      <created>1780909279455</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1780909279455</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
