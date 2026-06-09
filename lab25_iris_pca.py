@@ -21,7 +21,7 @@ X, Y = np.meshgrid(np.linspace(datamin[0], datamax[0], n),
 # linear, 100==> 0.97
 # poly, rbf
 # sigmoid
-svc = svm.SVC(kernel='rbf', C=100)
+svc = svm.SVC(kernel='linear', C=float('inf'))
 svc.fit(data, iris.target)
 vectors = svc.support_vectors_
 Z = svc.predict(np.c_[X.ravel(), Y.ravel()])
@@ -33,3 +33,7 @@ for c, s in zip([0, 1, 2], ['o', '^', 's']):
 plt.scatter(vectors[:, 0], vectors[:, 1], c='purple', marker='*', alpha=0.5, s=100)
 plt.title('accuracy={}'.format(svc.score(data, iris.target)))
 plt.show()
+
+
+
+# infinitive ==> float('inf')
