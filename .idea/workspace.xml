@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f301eecf-1031-4ca9-bc76-946b554a03f5" name="Changes" comment="k-mean &amp; decision tree 2026-06-10 09:00~13:15">
-      <change afterPath="$PROJECT_DIR$/lab33_k_kmeans.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab34_knn.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab35_classifiers4.py" afterDir="false" />
+    <list default="true" id="f301eecf-1031-4ca9-bc76-946b554a03f5" name="Changes" comment="KNN">
+      <change afterPath="$PROJECT_DIR$/lab36_nb.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab37_nb2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab38_pca1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,6 +74,8 @@
     "Python.lab30.executor": "Run",
     "Python.lab31.executor": "Run",
     "Python.lab33_k_kmeans.executor": "Run",
+    "Python.lab36_nb.executor": "Run",
+    "Python.lab36_nb2.executor": "Run",
     "Python.lab3_change_intercept.executor": "Run",
     "Python.lab4_change_coefficient.executor": "Run",
     "Python.lab5_regression1.executor": "Run",
@@ -95,53 +97,7 @@
       <recent name="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.lab33_k_kmeans">
-    <configuration name="lab27_decision_tree2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PYKT2026Jun08Labs" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab27_decision_tree2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="lab29_classifier3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PYKT2026Jun08Labs" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab29_classifier3.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.lab37_nb2">
     <configuration name="lab30" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
@@ -211,13 +167,59 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="lab36_nb" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYKT2026Jun08Labs" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab36_nb.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lab37_nb2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYKT2026Jun08Labs" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs\lab37_nb2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.lab37_nb2" />
+        <item itemvalue="Python.lab36_nb" />
         <item itemvalue="Python.lab33_k_kmeans" />
         <item itemvalue="Python.lab32" />
         <item itemvalue="Python.lab30" />
-        <item itemvalue="Python.lab29_classifier3" />
-        <item itemvalue="Python.lab27_decision_tree2" />
       </list>
     </recent_temporary>
   </component>
@@ -284,7 +286,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781068590882</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="k-mean">
+      <option name="closed" value="true" />
+      <created>1781070790340</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1781070790340</updated>
+    </task>
+    <task id="LOCAL-00008" summary="KNN">
+      <option name="closed" value="true" />
+      <created>1781070804201</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1781070804201</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -303,7 +321,9 @@
     <MESSAGE value="梯度畫圖" />
     <MESSAGE value="2026-06-09 09:00~16:39" />
     <MESSAGE value="k-mean &amp; decision tree 2026-06-10 09:00~13:15" />
-    <option name="LAST_COMMIT_MESSAGE" value="k-mean &amp; decision tree 2026-06-10 09:00~13:15" />
+    <MESSAGE value="k-mean" />
+    <MESSAGE value="KNN" />
+    <option name="LAST_COMMIT_MESSAGE" value="KNN" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
