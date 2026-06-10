@@ -1,0 +1,721 @@
+﻿lab2_matplotlib_review
+from matplotlib import pyplot as plt
+import numpy as np
+
+b = 5
+a = 3
+x = np.arange(-10, 10, 0.1)
+y = a * x + b
+plt.plot(x, y,label=f"y={a}x+{b}")
+plt.legend()
+plt.axhline(0, color='black')
+plt.axvline(0, color='black')
+plt.show()
+
+
+lab3_change_intercept.py
+from matplotlib import pyplot as plt
+import numpy as np
+
+b = np.linspace(5, -5, 10)
+print(b)
+a = 3
+x = np.arange(-10, 10, 0.1)
+print(x)
+for b1 in b:
+    y = a * x + b1
+    plt.plot(x, y, label=f"y={a}x+{b1}")
+    plt.legend()
+plt.axhline(0, color='black')
+plt.axvline(0, color='black')
+plt.show()
+
+
+lab4_change_coefficient.py
+
+from matplotlib import pyplot as plt
+import numpy as np
+
+b = 5
+a = np.linspace(-5,5, 11)
+print(a)
+x = np.arange(-10, 10, 0.1)
+for a1 in a:
+    y = a1 * x + b
+    plt.plot(x, y,label=f"y={a1}x+{b}")
+    plt.legend()
+plt.axhline(0, color='black')
+plt.axvline(0, color='black')
+plt.show()
+
+
+lab5_regression1
+
+from sklearn import linear_model
+from matplotlib import pyplot as plt
+
+regression = linear_model.LinearRegression()
+features = [[1], [2], [3]]
+values = [1, 4, 5]
+plt.scatter(features, values, color='blue')
+regression.fit(features, values)
+print(regression.coef_, regression.intercept_)
+range1 = [0,4]
+plt.plot(range1, regression.coef_*range1+regression.intercept_, color='red')
+plt.title('Linear Regression score={}'.format(regression.score(features, values)))
+plt.show()
+
+
+lab6_regression2
+
+from sklearn.linear_model import LinearRegression
+
+features = [[0, 0], [1, 1], [2, 2]]
+labels = [1, 4, 8]
+
+regression1 = LinearRegression()
+regression1.fit(features, labels)
+print("coef_:", regression1.coef_)
+print("intercept_:", regression1.intercept_)
+
+newFeatures = [[0, 1], [1, 0], [2, 4], [-3, 5]]
+predictResult = regression1.predict(newFeatures)
+print(predictResult)
+print("score:", regression1.score(features, labels))
+
+
+lab7_matplotlib_review2.py
+from matplotlib import pyplot as plt
+
+figure = plt.figure(figsize=(8, 6))
+ax = figure.add_subplot(projection='3d')
+x = [1, 3, 5]
+y = [6, 4, 2]
+z = [7, 5, 6]
+ax.scatter(x, y, z, c='r', marker='o')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab8_list_array.py
+from numpy import array
+
+features = [[0, 0], [1, 1], [2, 2]]
+labels = [1, 4, 8]
+featuresArray = array(features)
+print(type(featuresArray))
+print(featuresArray)
+print(featuresArray[0])
+print(featuresArray[1])
+print(featuresArray[2])
+print(featuresArray[:,0])
+print(featuresArray[:,1])
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from numpy import array
+from matplotlib import pyplot as plt
+
+features = [[0, 0], [1, 1], [2, 2]]
+labels = [1, 4, 8]
+featuresArray = array(features)
+
+figure = plt.figure(figsize=(8, 6))
+ax = figure.add_subplot(projection='3d')
+ax.scatter(featuresArray[:, 0], featuresArray[:, 1], labels, c=labels, marker='o')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+plt.show()
+
+
+lab10_matplotlib_depth.py
+from numpy import array
+from matplotlib import pyplot as plt
+from sklearn.linear_model import LinearRegression
+import numpy as np
+
+features = [[0, 0], [1, 1], [2, 2]]
+labels = [1, 4, 8]
+regression1 = LinearRegression()
+regression1.fit(features, labels)
+print("coef_:", regression1.coef_)
+print("intercept_:", regression1.intercept_)
+featuresArray = array(features)
+
+X = np.arange(-1, 3, 0.1)
+Y = np.arange(-1, 3, 0.1)
+X, Y = np.meshgrid(X, Y)
+Z = regression1.predict(np.c_[X.ravel(), Y.ravel()])
+Z = Z.reshape(X.shape)
+print(X.shape, Y.shape, Z.shape)
+
+figure = plt.figure(figsize=(8, 6))
+ax = figure.add_subplot(projection='3d')
+ax.plot_surface(X, Y, Z)
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from numpy import array
+from matplotlib import pyplot as plt
+from sklearn.linear_model import LinearRegression
+import numpy as np
+
+features = [[0, 0], [1, 1], [2, 2]]
+labels = [1, 4, 8]
+regression1 = LinearRegression()
+regression1.fit(features, labels)
+print("coef_:", regression1.coef_)
+print("intercept_:", regression1.intercept_)
+featuresArray = array(features)
+
+X = np.arange(-1, 3, 0.1)
+Y = np.arange(-1, 3, 0.1)
+X, Y = np.meshgrid(X, Y)
+Z = regression1.predict(np.c_[X.ravel(), Y.ravel()])
+Z = Z.reshape(X.shape)
+print(X.shape, Y.shape, Z.shape)
+
+figure = plt.figure(figsize=(8, 6))
+ax = figure.add_subplot(projection='3d')
+# viridis, plasma, inferno,
+ax.plot_surface(X, Y, Z,cmap=plt.cm.magma)
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+plt.show()
+
+https://matplotlib.org/stable/users/explain/colors/colormaps.html
+
+lab11_regression_generated_data
+
+from matplotlib import pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn import datasets
+import numpy as np
+
+data = datasets.make_regression(100, 1, noise=1)
+print(type(data), len(data), type(data[0]), type(data[1]))
+print(data[0].shape, data[1].shape)
+plt.scatter(data[0], data[1], marker='.', c='red')
+plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from matplotlib import pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn import datasets
+import numpy as np
+
+# np.random.seed(20260609) # only when you need to reproduce same result
+data = datasets.make_regression(100, 1, noise=0)
+print(type(data), len(data), type(data[0]), type(data[1]))
+print(data[0].shape, data[1].shape)
+plt.scatter(data[0], data[1], marker='.', c='red')
+regression1 = LinearRegression()
+regression1.fit(data[0], data[1])
+print(regression1.coef_, regression1.intercept_)
+range1 = np.arange(data[0].min() - 0.5, data[0].max() + 0.5, 0.01)
+plt.plot(range1, regression1.coef_ * range1 + regression1.intercept_, color='blue')
+plt.title("score={}".format(regression1.score(data[0], data[1])))
+plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from matplotlib import pyplot as plt
+from sklearn import datasets
+
+regressionData = datasets.make_regression(10, 6, noise=5)
+
+print(type(regressionData), regressionData[0].shape, regressionData[1].shape)
+
+for i in range(6):
+    x1 = regressionData[0][:, i]
+    y = regressionData[1]
+
+    plt.scatter(x1, y)
+    plt.show()
+
+
+lab13_sort_individual_var.py
+
+from matplotlib import pyplot as plt
+from sklearn import datasets
+
+regressionData = datasets.make_regression(10, 6, noise=5)
+
+# print(type(regressionData), regressionData[0].shape, regressionData[1].shape)
+
+l1 = [5, 1, 3, 2, 4]
+sortedL1 = sorted(l1)
+print(l1, sortedL1)
+
+print(regressionData[0])
+regX = regressionData[0]
+result1 = sorted(regX, key=lambda t: t[0])
+print(result1)
+result2 = sorted(regX, key=lambda t: t[1])
+print(result2)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from matplotlib import pyplot as plt
+from sklearn import datasets
+import numpy as np
+
+regressionData = datasets.make_regression(10, 6, noise=5)
+
+# print(type(regressionData), regressionData[0].shape, regressionData[1].shape)
+
+l1 = [5, 1, 3, 2, 4]
+sortedL1 = sorted(l1)
+print(l1, sortedL1)
+
+print(regressionData[0])
+regX = regressionData[0]
+result1 = sorted(regX, key=lambda t: t[0])
+result1 = np.array(result1)
+print(result1)
+result2 = sorted(regX, key=lambda t: t[1])
+result2 = np.array(result2)
+print(result2)
+
+
+lab14_reshape
+import numpy as np
+
+a = np.zeros((10, 2))
+print(a.shape)
+print(a)
+b = a.T
+c = b.view()
+print("b shape={}, c shape={}".format(b.shape, c.shape))
+d = np.reshape(b, (5, 4))
+print("b shape={}, d shape={}, c shape={}".format(b.shape, d.shape, c.shape))
+e = np.reshape(b, (20,))
+print(e.shape, e)
+f = np.reshape(b, (20, -1))
+print(f.shape)
+print(f)
+g = np.reshape(b, (-1, 20))
+print(g.shape)
+print(g)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+lab15_diabetes.py
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn import datasets
+
+data = datasets.load_diabetes()
+print(type(data))
+print(dir(data))
+print(data.data.shape)
+print(data.target.shape)
+print(data.target)
+
+dataForTest = -60
+data_train = data.data[:dataForTest]
+target_train = data.target[:dataForTest]
+print("train X shape:{}, y shape:{}".format(data_train.shape, target_train.shape))
+
+data_test = data.data[dataForTest:]
+target_test = data.target[dataForTest:]
+print("test X shape:{}, y shape:{}".format(data_test.shape, target_test.shape))
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn import datasets
+
+data = datasets.load_diabetes()
+print(type(data))
+print(dir(data))
+print(data.data.shape)
+print(data.target.shape)
+print(data.target)
+
+dataForTest = -60
+data_train = data.data[:dataForTest]
+target_train = data.target[:dataForTest]
+print("train X shape:{}, y shape:{}".format(data_train.shape, target_train.shape))
+
+data_test = data.data[dataForTest:]
+target_test = data.target[dataForTest:]
+print("test X shape:{}, y shape:{}".format(data_test.shape, target_test.shape))
+
+regression1 = LinearRegression()
+regression1.fit(data_train, target_train)
+print(regression1.coef_)
+print(regression1.intercept_)
+print(regression1.score(data_test, target_test))
+
+# evaluate test data
+for i in range(dataForTest, 0):
+    d = np.array(data_test[i]).reshape(1, -1)
+    p = regression1.predict(d)
+    print("predict:{:.2f}, actual:{:.2f}".format(p[0], target_test[i]))
+mse = np.mean((regression1.predict(data_test) - target_test) ** 2)
+print("mse:{:.2f}".format(mse))
+
+
+lab16_iris_explain
+
+from matplotlib import pyplot as plt
+from sklearn import datasets
+
+iris = datasets.load_iris()
+print(dir(iris))
+features = iris.feature_names
+print(features)
+X = iris.data
+y = iris.target
+
+counter = 1
+for i in range(0, 4):
+    for j in range(i + 1, 4):
+        xData = X[:, i]
+        yData = X[:, j]
+        plt.scatter(xData, yData, c=y)
+        plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab16
+
+from matplotlib import pyplot as plt
+from sklearn import datasets
+
+iris = datasets.load_iris()
+print(dir(iris))
+features = iris.feature_names
+print(features)
+X = iris.data
+y = iris.target
+
+counter = 1
+for i in range(0, 4):
+    for j in range(i + 1, 4):
+        plt.figure(counter, figsize=(6, 6))
+        counter += 1
+        xData = X[:, i]
+        yData = X[:, j]
+        x_min, x_max = xData.min() - 0.1, xData.max() + 0.1
+        y_min, y_max = yData.min() - 0.1, yData.max() + 0.1
+        plt.xlim(x_min, x_max)
+        plt.ylim(y_min, y_max)
+        plt.xticks(())
+        plt.yticks(())
+        plt.xlabel(features[i])
+        plt.ylabel(features[j])
+        plt.scatter(xData, yData, c=y)
+plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab17
+
+from matplotlib import pyplot as plt
+import numpy as np
+
+x = np.arange(0, 1, 0.0001)
+y = -np.log(x)
+plt.figure(0)
+plt.plot(x, y, label=f"y=-log(x)")
+plt.legend()
+plt.axhline(0, color='black')
+plt.axvline(0, color='black')
+plt.xticks([0, 0.5, 1])
+plt.axis((0.0, 1.0, 0.0, 10.0))
+plt.figure(1)
+y = -np.log(1 - x)
+plt.plot(x, y, label=f"y=-log(1-x)")
+plt.xticks((0, 0.5, 1))
+plt.axis((0.0, 1.0, 0.0, 10.0))
+plt.legend()
+plt.show()
+
+
+log18_logistic
+
+from matplotlib import pyplot as plt
+import numpy as np
+
+x = np.arange(-30, 30, 0.1)
+y = 1 / (1 + np.exp(-x))
+plt.xlabel('x')
+
+plt.ylabel('P,F(x)')
+plt.plot(x, y)
+plt.axhline(0.0, color='green', linestyle='-.')
+plt.axhline(1.0, color='green', linestyle='-.')
+plt.axhline(0.5, color='red', linestyle='--')
+plt.axvline(0, color='black')
+plt.show()
+
+lab18_logistic2
+
+import numpy as np
+from matplotlib import pyplot as plt
+
+ws = [0.5, 1.0, 2.0, 3.0, 4.0]
+message = 'w={}'
+
+x = np.arange(-30, 30, 0.1)
+
+for w in ws:
+    y = 1 / (1 + np.exp(-w * x))
+    plt.xlabel('x')
+    plt.ylabel('P,F(x)')
+    plt.plot(x, y,label=message.format(w))
+plt.legend()
+plt.show()
+
+
+lab20_logistic3.py
+import numpy as np
+from matplotlib import pyplot as plt
+
+bs = [-12.0, -8.0, -4.0, 0, 4.0, 8.0, 12.0]
+message = 'b={}'
+
+x = np.arange(-10, 10, 0.1)
+
+for b in bs:
+    y = 1 / (1 + np.exp(-(2 * x + b)))
+    plt.xlabel('x')
+    plt.ylabel('P,F(x)')
+    plt.plot(x, y, label=message.format(b))
+plt.axhline(0.0, color='green', linestyle='-.')
+plt.axhline(1.0, color='green', linestyle='-.')
+plt.axhline(0.5, color='red', linestyle='--')
+plt.axvline(0, color='black')
+plt.legend()
+plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab21_iris.py
+
+from scipy.stats import alpha
+from sklearn.linear_model import LogisticRegression
+from sklearn import datasets
+import numpy as np
+from matplotlib import pyplot as plt
+plt.axhline(0.0, color='yellow', linestyle='-.', alpha=0.5)
+plt.axhline(1.0, color='green', linestyle='-.', alpha=0.5)
+plt.axhline(1.0, color='yellow', linestyle='-.')
+plt.axhline(0.5, color='red', linestyle='--')
+iris = datasets.load_iris()
+print(iris.keys())
+print(iris.feature_names)
+X = iris.data
+y = iris.target
+X = X[:, 3:]
+print(X)
+y = (y == 2).astype(int)
+print(y)
+regression1 = LogisticRegression()
+regression1.fit(X, y)
+print(regression1.coef_)
+print(regression1.intercept_)
+
+X_seq = np.linspace(0, 2.6, 1000).reshape(-1, 1)
+y_probability = regression1.predict_proba(X_seq)
+print(y_probability.shape)
+
+plt.plot(X, y, "g.")
+plt.plot(X_seq, y_probability[:, 1], "b",label="iris virginica")
+plt.plot(X_seq, y_probability[:, 0], "g--",label="not iris virginica")
+plt.legend()
+
+plt.show()
+plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from scipy.stats import alpha
+from sklearn.linear_model import LogisticRegression
+from sklearn import datasets
+import numpy as np
+from matplotlib import pyplot as plt
+
+plt.axhline(0.0, color='yellow', linestyle='-.', alpha=0.5)
+plt.axhline(1.0, color='green', linestyle='-.', alpha=0.5)
+plt.axhline(1.0, color='yellow', linestyle='-.')
+plt.axhline(0.5, color='red', linestyle='--')
+iris = datasets.load_iris()
+print(iris.keys())
+print(iris.feature_names)
+X = iris.data
+y = iris.target
+X = X[:, 3:]
+print(X)
+y = (y == 2).astype(int)
+print(y)
+regression1 = LogisticRegression()
+regression1.fit(X, y)
+print(regression1.coef_)
+print(regression1.intercept_)
+
+X_seq = np.linspace(0, 2.6, 1000).reshape(-1, 1)
+y_probability = regression1.predict_proba(X_seq)
+Z = 1 / (1 + np.exp(-(regression1.coef_ * X_seq + regression1.intercept_)))
+print(y_probability.shape)
+
+plt.plot(X, y, "g.")
+plt.plot(X_seq, y_probability[:, 1], "b", label="iris virginica")
+plt.plot(X_seq, y_probability[:, 0], "g--", label="not iris virginica")
+plt.plot(X_seq, Z, "r", label="hand calculated",alpha=0.5, linewidth=6)
+plt.legend()
+
+plt.show()
+plt.show()
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+under terminal
+pip install scipy-stubs
+
+
+lab22_classifiers
+from sklearn import datasets
+from sklearn import model_selection
+from sklearn.linear_model import LogisticRegression
+from numpy import mean
+
+iris = datasets.load_iris()
+features = iris.data
+target = iris.target
+
+classifiers = [LogisticRegression(max_iter=200)]
+
+for c in classifiers:
+    scores = model_selection.cross_val_score(c, features, target, cv=3)
+    print(c, scores, mean(scores))
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab23_svc1.py
+
+
+import numpy as np
+from sklearn.svm import SVC
+
+X = np.array([[-1, -1], [-2, -1], [-3, -3], [1, 1], [2, 1], [3, 3]])
+y = np.array([1, 1, 1, 2, 2, 2])
+classifier = SVC(kernel='linear')
+classifier.fit(X, y)
+print(classifier.coef_)
+print(classifier.intercept_)
+print(classifier.support_vectors_)
+print(classifier.predict([[0.5, -0.5], [-0.5, 0.5], [0.3, 3], [3, 0.3], [-0.3, -3]]))
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab24_classifiers
+
+from sklearn import datasets
+from sklearn import model_selection
+from sklearn.linear_model import LogisticRegression
+from numpy import mean
+from sklearn.svm import SVC
+
+iris = datasets.load_iris()
+features = iris.data
+target = iris.target
+
+classifiers = [LogisticRegression(max_iter=200),
+               SVC(kernel='linear'),
+               SVC(kernel='poly'),
+               SVC(kernel='rbf'),
+               SVC(),
+               ]
+
+for c in classifiers:
+    scores = model_selection.cross_val_score(c, features, target, cv=3)
+    print(c, scores, mean(scores))
+
+--------------------------------------------
+lab25_iris_pca
+
+
+import numpy as np
+from sklearn import datasets
+from sklearn import svm
+from sklearn.decomposition import PCA
+from matplotlib import pyplot as plt
+iris = datasets.load_iris()
+pca = PCA(n_components=2)
+data = pca.fit(iris.data).transform(iris.data)
+print(data.shape)
+# print(data[0:5,])
+datamax = data.max(axis=0) + 0.1
+datamin = data.min(axis=0) - 0.1
+
+n = 200
+X, Y = np.meshgrid(np.linspace(datamin[0], datamax[0], n),
+                   np.linspace(datamin[1], datamax[1], n))
+svc = svm.SVC(kernel='linear', C=1)
+svc.fit(data, iris.target)
+vectors = svc.support_vectors_
+print(vectors)
+plt.scatter(vectors[:, 0], vectors[:, 1], c='red', marker='*')
+plt.show()
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import numpy as np
+from sklearn import datasets
+from sklearn import svm
+from sklearn.decomposition import PCA
+from matplotlib import pyplot as plt
+
+iris = datasets.load_iris()
+pca = PCA(n_components=2)
+data = pca.fit(iris.data).transform(iris.data)
+print(data.shape)
+# print(data[0:5,])
+# datamax = data.max(axis=0) + 0.1
+# datamin = data.min(axis=0) - 0.1
+datamax = data.max(axis=0) + 5
+datamin = data.min(axis=0) - 5
+
+n = 1000
+X, Y = np.meshgrid(np.linspace(datamin[0], datamax[0], n),
+                   np.linspace(datamin[1], datamax[1], n))
+# linear, 1==>0.966666
+# linear, 100==> 0.97
+# poly, rbf
+# sigmoid
+svc = svm.SVC(kernel='rbf', C=100)
+svc.fit(data, iris.target)
+vectors = svc.support_vectors_
+Z = svc.predict(np.c_[X.ravel(), Y.ravel()])
+plt.contour(X, Y, Z.reshape(X.shape))
+print(vectors)
+for c, s in zip([0, 1, 2], ['o', '^', 's']):
+    d = data[iris.target == c]
+    plt.scatter(d[:, 0], d[:, 1], c='k', marker=s)
+plt.scatter(vectors[:, 0], vectors[:, 1], c='red', marker='*', alpha=0.5, s=100)
+plt.title('accuracy={}'.format(svc.score(data, iris.target)))
+plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import numpy as np
+from sklearn import datasets
+from sklearn import svm
+from sklearn.decomposition import PCA
+from matplotlib import pyplot as plt
+
+iris = datasets.load_iris()
+pca = PCA(n_components=2)
+data = pca.fit(iris.data).transform(iris.data)
+print(data.shape)
+# print(data[0:5,])
+# datamax = data.max(axis=0) + 0.1
+# datamin = data.min(axis=0) - 0.1
+datamax = data.max(axis=0) + 5
+datamin = data.min(axis=0) - 5
+
+n = 1000
+X, Y = np.meshgrid(np.linspace(datamin[0], datamax[0], n),
+                   np.linspace(datamin[1], datamax[1], n))
+# linear, 1==>0.966666
+# linear, 100==> 0.97
+# poly, rbf
+# sigmoid
+svc = svm.SVC(kernel='linear', C=float('inf'))
+svc.fit(data, iris.target)
+vectors = svc.support_vectors_
+Z = svc.predict(np.c_[X.ravel(), Y.ravel()])
+plt.contour(X, Y, Z.reshape(X.shape))
+print(vectors)
+for c, s in zip([0, 1, 2], ['o', '^', 's']):
+    d = data[iris.target == c]
+    plt.scatter(d[:, 0], d[:, 1], c='k', marker=s)
+plt.scatter(vectors[:, 0], vectors[:, 1], c='red', marker='*', alpha=0.5, s=100)
+plt.title('accuracy={}'.format(svc.score(data, iris.target)))
+plt.show()
+
+
+
+infinitive ==> float('inf')
