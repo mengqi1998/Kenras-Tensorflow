@@ -1,0 +1,546 @@
+﻿lab26_decision_tree
+
+
+from sklearn import tree
+from matplotlib import pyplot as plt
+X = [[0, 0], [1, 1]]
+Y = [0, 1]
+classifier = tree.DecisionTreeClassifier()
+classifier.fit(X, Y)
+print(classifier)
+print(classifier.tree_)
+print(classifier.predict([[0, 5], [0, -5], [-5, 0], [-5, -5], [5, 5], [3, 5]]))
+tree.plot_tree(classifier, filled=True)
+plt.show()
+https://graphviz.org/download/
+https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/15.0.0/windows_10_cmake_Release_graphviz-install-15.0.0-win64.exe
+
+close pycharm, re-open pycharm
+
+
+lab27_decision_tree2.py
+
+from subprocess import check_call
+from matplotlib import pyplot as plt
+from sklearn import tree
+from sklearn.tree import export_graphviz
+
+X = [[0, 0], [1, 1], [0, 1], [1, 0]]
+Y = [0, 0, 1, 1]
+col = ['red', 'green', 'blue', 'yellow']
+marker = ['o', 'd']
+index = 0
+while index < len(X):
+    type = Y[index]
+    plt.scatter(X[index][0], X[index][1], c=col[type], marker=marker[type])
+    index += 1
+
+plt.show()
+
+classifier = tree.DecisionTreeClassifier()
+classifier.fit(X, Y)
+# 手動建output目錄
+export_graphviz(classifier, out_file='output/lab27.dot', filled=True,
+                rounded=True, special_characters=True)
+#check_call(['dot', '-Tpng', 'output/lab27.dot', '-o', 'output/lab27.png'])
+check_call(['dot', '-Tpdf', 'output/lab27.dot', '-o', 'output/lab27.pdf'])
+
+
+
+where jupyter-notebook
+jupyter-notebook
+----------------------
+from sklearn import datasets
+import pandas as pd
+iris = datasets.load_iris()
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+df
+---------------------
+from sklearn.tree import DecisionTreeClassifier, export_graphviz
+y = iris.target
+dtree = DecisionTreeClassifier()
+dtree.fit(df,y)
+---------------------
+import graphviz as gv
+
+--------------------
+open a new tab under pycharm
+pip install graphviz
+---------------------
+import graphviz as gv
+from sklearn import tree
+dot_data = tree.export_graphviz(dtree, out_file=None, feature_names=iris.feature_names, filled=True, rounded=True, special_characters=True)
+graph = gv.Source(dot_data)
+graph
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab29_classifier3.py
+
+
+from sklearn import datasets
+from sklearn import model_selection
+from sklearn.linear_model import LogisticRegression
+from numpy import mean
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+
+iris = datasets.load_iris()
+features = iris.data
+target = iris.target
+
+classifiers = [LogisticRegression(max_iter=200),
+               SVC(kernel='linear'),
+               SVC(kernel='poly'),
+               SVC(kernel='rbf'),
+               SVC(),
+               DecisionTreeClassifier()
+               ]
+
+for c in classifiers:
+    scores = model_selection.cross_val_score(c, features, target, cv=3)
+    print(c, scores, mean(scores))
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import numpy as np
+from copy import deepcopy
+from matplotlib import pyplot as plt
+
+CLUSTER_COUNT = 50
+X = np.r_[np.random.randn(CLUSTER_COUNT, 2) + [2, 2],
+          np.random.randn(CLUSTER_COUNT, 2) + [0, -2],
+          np.random.randn(CLUSTER_COUNT, 2) + [-2, 2]]
+print(X.shape)
+[plt.scatter(e[0], e[1], c='black', s=7) for e in X]
+
+k = 3
+C_x = np.random.uniform(np.min(X[:, 0]), np.max(X[:, 0]), size=k)
+C_y = np.random.uniform(np.min(X[:, 1]), np.max(X[:, 1]), size=k)
+C = np.array(list(zip(C_x, C_y)))
+print(C)
+plt.scatter(C_x, C_y, marker='*', s=100, c='#0599FF')
+
+
+def dist(a, b, ax=1):
+    return np.linalg.norm(a - b, axis=ax)
+
+
+C_old = np.zeros(C.shape)
+clusters = np.zeros(len(X))
+delta = dist(C, C_old, None)
+
+plt.title(f"delta={delta}")
+plt.show()
+
+while delta != 0:
+    print("start a new iteration")
+    for i in range(len(X)):
+        distances = dist(X[i], C)
+        cluster = np.argmin(distances)
+        clusters[i] = cluster
+    C_old = deepcopy(C)
+    for i in range(k):
+        points = [X[j] for j in range(len(X)) if clusters[j] == i]
+        C[i] = np.mean(points, axis=0)
+    delta = dist(C, C_old, None)
+    print("new delta={}".format(delta))
+    
+----------------------------------------------------
+import numpy as np
+from copy import deepcopy
+from matplotlib import pyplot as plt
+
+CLUSTER_COUNT = 50
+X = np.r_[np.random.randn(CLUSTER_COUNT, 2) + [2, 2],
+          np.random.randn(CLUSTER_COUNT, 2) + [0, -2],
+          np.random.randn(CLUSTER_COUNT, 2) + [-2, 2]]
+print(X.shape)
+[plt.scatter(e[0], e[1], c='black', s=7) for e in X]
+
+k = 3
+C_x = np.random.uniform(np.min(X[:, 0]), np.max(X[:, 0]), size=k)
+C_y = np.random.uniform(np.min(X[:, 1]), np.max(X[:, 1]), size=k)
+C = np.array(list(zip(C_x, C_y)))
+print(C)
+plt.scatter(C_x, C_y, marker='*', s=100, c='#0599FF')
+
+
+def dist(a, b, ax=1):
+    return np.linalg.norm(a - b, axis=ax)
+
+
+C_old = np.zeros(C.shape)
+clusters = np.zeros(len(X))
+delta = dist(C, C_old, None)
+
+plt.title(f"delta={delta}")
+plt.show()
+
+colors = ['r', 'g', 'b', 'c', 'm', 'y', 'k']
+
+
+def plot_kmean(current_cluster, delta):
+    fig, ax = plt.subplots()
+    for index1 in range(k):
+        pts = np.array([X[j] for j in range(len(X)) if current_cluster[j] == index1])
+        print(pts.shape)
+        ax.scatter(pts[:, 0], pts[:, 1], c=colors[index1], s=7)
+    plt.scatter(C[:, 0], C[:, 1], marker='*', s=100, c='#0599FF')
+    plt.title(f"delta={delta}")
+    plt.show()
+
+
+while delta != 0:
+    print("start a new iteration")
+    for i in range(len(X)):
+        distances = dist(X[i], C)
+        cluster = np.argmin(distances)
+        clusters[i] = cluster
+    C_old = deepcopy(C)
+    for i in range(k):
+        points = [X[j] for j in range(len(X)) if clusters[j] == i]
+        C[i] = np.mean(points, axis=0)
+    delta = dist(C, C_old, None)
+    print("new delta={}".format(delta))
+    plot_kmean(clusters, delta)
+
+
+lab31_simple_kmeans
+
+from sklearn.cluster import KMeans
+import numpy as np
+
+X = np.array([[1, 0], [0, 1], [1, 2], [1, 4], [1, 8],
+              [4, 2], [4, 4], [4, 0], [4, 6], [4, 7]])
+kmeans = KMeans(n_clusters=2).fit(X)
+print("labels=", kmeans.labels_)
+print("centers=", kmeans.cluster_centers_)
+print("kmenas inertia=", kmeans.inertia_)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+from matplotlib import pyplot as plt
+import numpy as np
+from sklearn.cluster import KMeans
+
+k = 3
+#np.random.seed(20260610)
+X = np.r_[np.random.randn(50, 2) + [2, 2],
+          np.random.randn(50, 2) + [0, -2],
+          np.random.randn(50, 2) + [-2, 2]]
+kmeans = KMeans(n_clusters=k)
+kmeans.fit(X)
+
+print("centers: ", kmeans.cluster_centers_)
+print("inertia", kmeans.inertia_)
+
+colors = ['c', 'm', 'y', 'k']
+markers = ['o', '^', '*', '.']
+for i in range(k):
+    dataX = X[kmeans.labels_ == i]
+    plt.scatter(dataX[:, 0], dataX[:, 1], c=colors[i], marker=markers[i])
+    print("[{}] size={}".format(i, dataX.size))
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=100, marker="*", c="#0599FF")
+plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab33_k_kmeans.py
+
+
+import numpy as np
+from sklearn.cluster import KMeans
+from matplotlib import pyplot as plt
+
+
+CLUSTER_COUNT = 50000
+X = np.r_[np.random.randn(CLUSTER_COUNT, 2) + [2, 2],
+          np.random.randn(CLUSTER_COUNT, 2) + [0, -2],
+          np.random.randn(CLUSTER_COUNT, 2) + [-2, 2]]
+
+inertias = []
+
+for k in range(1, 11):
+    kmeans = KMeans(n_clusters=k)
+    kmeans.fit(X)
+    inertias.append(kmeans.inertia_)
+
+print(inertias)
+plt.plot(range(1, 11), inertias)
+plt.xticks(range(1, 11))
+plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab34_knn
+
+import numpy as np
+from sklearn.neighbors import NearestNeighbors
+
+X = np.array([[-1, -1], [-2, -1], [-3, -2], [1, 1], [2, 1], [3, 2]])
+
+nn = NearestNeighbors(n_neighbors=3).fit(X)
+print(nn)
+distances, indices = nn.kneighbors(X)
+print(distances)
+print(indices)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab35_classifiers4.py
+
+from sklearn import datasets
+from sklearn import model_selection
+from sklearn.linear_model import LogisticRegression
+from numpy import mean
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+
+iris = datasets.load_iris()
+features = iris.data
+target = iris.target
+
+classifiers = [LogisticRegression(max_iter=200),
+               SVC(kernel='linear'),
+               SVC(kernel='poly'),
+               SVC(kernel='rbf'),
+               SVC(),
+               DecisionTreeClassifier(),
+               KNeighborsClassifier(n_neighbors=2),
+               KNeighborsClassifier(n_neighbors=3),
+               KNeighborsClassifier(n_neighbors=4),
+               KNeighborsClassifier(n_neighbors=5),
+               KNeighborsClassifier(n_neighbors=6),
+               KNeighborsClassifier(n_neighbors=7),
+               KNeighborsClassifier(n_neighbors=8),
+               KNeighborsClassifier(n_neighbors=9),
+               ]
+
+for c in classifiers:
+    scores = model_selection.cross_val_score(c, features, target, cv=3)
+    print(c, scores, mean(scores))
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import numpy as np
+from sklearn.naive_bayes import GaussianNB
+
+X = np.array([[-1, -1], [-2, -1], [-3, -2], [1, 1], [2, 1], [3, 2]])
+Y = np.array([1, 1, 1, 2, 2, 2])
+classifier = GaussianNB()
+classifier.fit(X, Y)
+result = classifier.predict([[0, 0], [-1, 1], [1, -1], [0, 3], [3, 0]])
+print(result)
+
+classifier2 = GaussianNB()
+classifier2.partial_fit(X, Y, np.unique(Y))
+result = classifier2.predict([[0, 0], [-1, 1], [1, -1], [0, 3], [3, 0]])
+print("partial fit result:")
+print(result)
+classifier2.partial_fit([[0.5, 0.5], [0.4, 0.6], [0.6, 0.4]], [2, 2, 2])
+newResult = classifier2.predict([[0, 0], [-1, 1], [1, -1], [0, 3], [3, 0]])
+print(newResult)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab36_nb2
+import numpy as np
+from sklearn.naive_bayes import GaussianNB
+from matplotlib import pyplot as plt
+
+X = np.array([[-1, -1], [-2, -1], [-3, -2], [1, 1], [2, 1], [3, 2]])
+# Y = np.array([1, 1, 1, 2, 2, 2])
+#Y = np.array([1, 2, 2, 1, 2, 2])
+Y = np.array([1, 1, 2, 1, 1, 2])
+x_min, x_max = -4, 4
+y_min, y_max = -4, 4
+h = .025
+xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+classifier = GaussianNB()
+classifier.fit(X, Y)
+Z = classifier.predict(np.c_[xx.ravel(), yy.ravel()])
+Z = Z.reshape(xx.shape)
+print(xx.shape)
+print(yy.shape)
+print(Z.shape)
+plt.xlim(xx.min(), xx.max())
+plt.ylim(yy.min(), yy.max())
+plt.pcolormesh(xx, yy, Z)
+
+XB = []
+YB = []
+XR = []
+YR = []
+index = 0
+
+for index in range(0, len(Y)):
+    if Y[index] == 1:
+        XB.append(X[index, 0])
+        YB.append(X[index, 1])
+    elif Y[index] == 2:
+        XR.append(X[index, 0])
+        YR.append(X[index, 1])
+
+print(XB)
+print(YB)
+print(XR)
+print(YR)
+plt.scatter(XB, YB, color='b', label='blue, class1')
+plt.scatter(XR, YR, color='r', label='Red, class2')
+plt.legend()
+plt.show()
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+lab38_pca1
+
+from matplotlib import pyplot as plt
+from sklearn import datasets
+from sklearn.decomposition import PCA
+
+iris = datasets.load_iris()
+
+X = iris.data
+species = iris.target
+
+fig = plt.figure(1, figsize=(8, 8))
+ax = fig.add_subplot(projection='3d')
+pca3 = PCA(n_components=3)
+X_reduced = pca3.fit_transform(X)
+print(pca3.explained_variance_ratio_)
+ax.scatter(X_reduced[:, 0], X_reduced[:, 1], X_reduced[:, 2], c=species,
+           cmap=plt.cm.Paired)
+ax.set_title("iris in 3 dimensions")
+ax.set_xlabel("first eigenvector")
+ax.set_ylabel("second eigenvector")
+ax.set_zlabel("third eigenvector")
+plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from numpy import array
+from sklearn.decomposition import PCA
+
+A = array([[1, 2, 3], [3, 4, 5], [5, 6, 7], [7, 8, 9]])
+print(A)
+pca = PCA(n_components=2)
+pca.fit(A)
+print(pca.explained_variance_)
+print(pca.explained_variance_ratio_)
+print(pca.components_)
+B = pca.transform(A)
+print(B)
+
+
+lab_pca3
+
+from numpy import array, cov, mean
+from numpy.linalg import eig
+
+A = array([[1, 2, 3], [3, 4, 5], [5, 6, 7], [7, 8, 9]])
+print(A)
+M = mean(A.T, axis=1)
+print(M)
+M2 = mean(A.T)
+print(M2)
+M3 = mean(A, axis=1)
+print(M3)
+
+# move to center
+C = A - M
+print(C)
+V = cov(C.T)
+print(V)
+values, vectors = eig(V)
+print("vectors", vectors)
+print("values", values)
+P = vectors.T.dot(C.T)
+print("project result:")
+print(P.T)
+
+
+commit as ==> machin learning part finish
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab41_tensor_intro1
+import tensorflow as tf
+
+tensor1 = tf.constant("hello tensorflow")
+print(type(tensor1))
+print(tensor1)
+value1 = tensor1.numpy()
+print(type(value1), value1)
+x1 = "hello"
+print(type(x1), x1)
+x2 = b"hello"
+print(type(x2), x2)
+print(x1 == x2)
+
+
+
+
+lab41_tensor_intro2
+
+import tensorflow as tf
+
+tf.compat.v1.disable_eager_execution()
+tensor1 = tf.constant('hello tensorflow')
+print(type(tensor1))
+print(tensor1)
+s1 = tf.compat.v1.Session()
+result = s1.run(tensor1)
+print(result)
+s1.close()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab43_tensor_operation.py
+
+
+import tensorflow as tf
+import numpy as np
+
+a = np.array([5, 3, 8])
+b = np.array([3, -1, 2])
+c = np.add(a, b)
+print(c, type(c))
+d = tf.add(a, b)
+print(d.numpy(), type(d))
+
+ta = tf.constant([5, 3, 8])
+tb = tf.constant([3, -1, 2])
+tc = tf.add(ta, tb)
+print(tc.numpy(), type(tc))
+td = tf.math.add(ta, tb)
+print(td.numpy(), type(td))
+te = np.add(ta, tb)
+print(te, type(te))
+===================================>
+lab44_tensor_operation2
+import tensorflow as tf
+import numpy as np
+
+tf.compat.v1.disable_eager_execution()
+
+ta = tf.constant([5, 3, 8])
+tb = tf.constant([3, -1, 2])
+tc = tf.add(ta, tb)
+print(tc, type(tc))
+
+print("---start tensorflow session---")
+
+with tf.compat.v1.Session() as session1:
+    result = session1.run(tc)
+    print(result)
+print("---finish tensorflow session---")
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab45_tensor_flow1
+
+
+import tensorflow as tf
+
+tf.compat.v1.disable_eager_execution()
+
+a = tf.compat.v1.placeholder(dtype=tf.int32, shape=(None,))
+b = tf.compat.v1.placeholder(dtype=tf.int32, shape=(None,))
+c = tf.add(a, b)
+print(type(a))
+print(type(b))
+print(type(c))
+
+with tf.compat.v1.Session() as sess:
+    result = sess.run(c, feed_dict={
+        # a: [1, 2, 3, 4, 5],
+        # b: [9, 7, 5, 3, 1]
+        # a: [3, 11],
+        # b: [5, 1]
+        a: [1.2, 2.4, 3.9],
+        b: [4.4, 5.5, 6.9]
+    })
+    print(result)
