@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f301eecf-1031-4ca9-bc76-946b554a03f5" name="Changes" comment="pca">
-      <change afterPath="$PROJECT_DIR$/lab41_tensor_intro1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab41_tensor_intro2.py" afterDir="false" />
+    <list default="true" id="f301eecf-1031-4ca9-bc76-946b554a03f5" name="Changes" comment="tensorflow">
+      <change afterPath="$PROJECT_DIR$/lab43_tensor_operation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab44_tensor_operation2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab45_tensor_flow1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab41_tensor_intro2.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab42_tensor_intro2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +82,8 @@
     "Python.lab3_change_intercept.executor": "Run",
     "Python.lab40_pca3.executor": "Run",
     "Python.lab41_tensor_intro1.executor": "Run",
+    "Python.lab41_tensor_intro2.executor": "Run",
+    "Python.lab44_tensor_operation2.executor": "Run",
     "Python.lab4_change_coefficient.executor": "Run",
     "Python.lab5_regression1.executor": "Run",
     "Python.lab6_regression2.executor": "Run",
@@ -100,53 +104,7 @@
       <recent name="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.lab41_tensor_intro2">
-    <configuration name="lab38_pca1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PYKT2026Jun08Labs" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab38_pca1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="lab39_pca2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PYKT2026Jun08Labs" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs\lab39_pca2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.lab45_tensor_flow1">
     <configuration name="lab40_pca3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
@@ -193,7 +151,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab41_tensor_intro2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab42_tensor_intro2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -207,7 +165,53 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab41_tensor_intro2.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs\lab42_tensor_intro2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lab44_tensor_operation2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYKT2026Jun08Labs" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab44_tensor_operation2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lab45_tensor_flow1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYKT2026Jun08Labs" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab45_tensor_flow1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -218,11 +222,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.lab41_tensor_intro2" />
+        <item itemvalue="Python.lab45_tensor_flow1" />
+        <item itemvalue="Python.lab44_tensor_operation2" />
+        <item itemvalue="Python.lab42_tensor_intro2" />
         <item itemvalue="Python.lab41_tensor_intro1" />
         <item itemvalue="Python.lab40_pca3" />
-        <item itemvalue="Python.lab39_pca2" />
-        <item itemvalue="Python.lab38_pca1" />
       </list>
     </recent_temporary>
   </component>
@@ -321,7 +325,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781079716042</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="tensorflow">
+      <option name="closed" value="true" />
+      <created>1781080196084</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1781080196084</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -344,7 +356,8 @@
     <MESSAGE value="KNN" />
     <MESSAGE value="nb" />
     <MESSAGE value="pca" />
-    <option name="LAST_COMMIT_MESSAGE" value="pca" />
+    <MESSAGE value="tensorflow" />
+    <option name="LAST_COMMIT_MESSAGE" value="tensorflow" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
