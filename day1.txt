@@ -1,0 +1,365 @@
+﻿https://www.intel.com.tw/content/www/tw/zh/ark.html
+
+https://learn.microsoft.com/zh-tw/cpp/windows/latest-supported-vc-redist?view=msvc-170
+
+https://aka.ms/vc14/vc_redist.x64.exe
+
+where python
+
+gpedit.msc
+
+python -m pip install --upgrade pip
+
+pip install --upgrade virtualenv virtualenvwrapper virtualenvwrapper-win
+
+pip list
+
+mkvirtualenv pyktenv
+
+set path
+
+--- open another terminal
+set path
+workon pyktenv
+deactivate
+
+set path
+workon
+------------------------------------
+pip list
+pip install --upgrade tensorflow
+python.exe -m pip install --upgrade pip
+pip install --upgrade tensorflow
+
+pip install numpy scipy scikit-learn matplotlib pandas ipython jupyter pillow keras
+
+https://git-scm.com/
+
+記得申請
+https://github.com/
+如果有就登入
+
+
+install git (使用預設值)
+關閉cmd
+重啟cmd
+git --version
+git config --global user.name "Mark Ho"
+git config --global user.email menghang@gmail.com
+
+git config --list
+workon
+workon pyktenv
+
+python
+quit() to quit >>>
+
+ipython
+import tensorflow as tf
+
+ x1 = tf.random.normal([2,2])
+x1
+
+tf.reduce_sum(x1)
+
+open your pycharm
+------------------------------
+quit()
+where python
+C:\Users\Admin\Envs\pyktenv\Scripts\python.exe
+
+
+----> C:\Users\Admin\AppData\Roaming\JetBrains
+
+-------------------
+# custom PyCharm VM options (expand/override 'bin\pycharm64.exe.vmoptions')
+
+
+-Xmx8192m
+-Xms8192m
+----------------
+
+lab0_env_check.py
+
+
+import sys
+import os
+import sklearn
+import tensorflow
+import numpy
+import keras
+print("python的intepreter在:{}".format(sys.executable))
+print("目前的工作目錄:{}".format(os.getcwd()))
+print("sklearn的版本:{}".format(sklearn.__version__))
+print("tensorflow version:{}".format(tensorflow.__version__))
+print("numpy version:{}".format(numpy.__version__))
+print("keras version:{}".format(keras.__version__))
+
+https://www.youtube.com/playlist?list=PLoROMvodv4rOaMFbaqxPDoLWjDaRAdP9D
+
+
+lab1_explain_gradient
+
+from sklearn import datasets
+from matplotlib import pyplot as plt
+
+regressionData = datasets.make_regression(n_samples=1000,n_features=1, noise=5)
+#print(regressionData)
+# ^,
+plt.scatter(regressionData[0],regressionData[1],c='red',marker='.')
+plt.show()
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from sklearn import datasets
+from matplotlib import pyplot as plt
+import numpy as np
+
+regressionData = datasets.make_regression(n_samples=1000, n_features=1, noise=5)
+# print(regressionData)
+# ^,
+plt.scatter(regressionData[0], regressionData[1], c='red', marker='.')
+
+init_m = 10
+init_b = 10
+learning_rate = 0.01
+range1 = [-5, 5]
+plt.plot(range1, init_m * np.array(range1) + init_b, 'g--')
+
+
+def cost(m, b, X, Y):
+    N = len(X)
+    cost = 0
+    for i in range(N):
+        cost = (Y[i] - (m * X[i] + b)) ** 2
+    return cost
+
+init_cost = cost(init_m, init_b, regressionData[0], regressionData[1])
+print(init_cost, type(init_cost))
+plt.title("cost={:.2f}".format(init_cost[0]))
+plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from sklearn import datasets
+from matplotlib import pyplot as plt
+import numpy as np
+
+regressionData = datasets.make_regression(n_samples=1000, n_features=1, noise=5)
+# print(regressionData)
+# ^,
+plt.scatter(regressionData[0], regressionData[1], c='red', marker='.')
+
+init_m = 10
+init_b = 10
+learning_rate = 0.01
+range1 = [-5, 5]
+plt.plot(range1, init_m * np.array(range1) + init_b, 'g--')
+
+
+def cost(m, b, X, Y):
+    N = len(X)
+    cost = 0
+    for i in range(N):
+        cost = (Y[i] - (m * X[i] + b)) ** 2
+    return cost / N
+
+
+init_cost = cost(init_m, init_b, regressionData[0], regressionData[1])
+print(init_cost, type(init_cost))
+plt.title("cost={:.8f}".format(init_cost[0]))
+plt.show()
+
+
+def update_weight(m, b, X, Y, l):
+    m_deriv = 0
+    b_deriv = 0
+    N = len(X)
+    for i in range(N):
+        m_deriv += -2 * X[i] * (Y[i] - (m * X[i] + b))
+        b_deriv += -2 * (Y[i] - (m * X[i] + b))
+    m -= l * (m_deriv / N)
+    b -= l * (b_deriv / N)
+    return m, b
+
+
+current_m = init_m
+current_b = init_b
+for _ in range(100):
+    new_m, new_b = update_weight(current_m, current_b, regressionData[0], regressionData[1], learning_rate)
+    print(new_m, new_b)
+    new_cost = cost(new_m, new_b, regressionData[0], regressionData[1])
+    print("cost={}".format(new_cost))
+    current_m = new_m
+    current_b = new_b
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from sklearn import datasets
+from matplotlib import pyplot as plt
+import numpy as np
+
+regressionData = datasets.make_regression(n_samples=1000, n_features=1, noise=5)
+# print(regressionData)
+# ^,
+plt.scatter(regressionData[0], regressionData[1], c='red', marker='.')
+
+init_m = 10
+init_b = 10
+learning_rate = 0.01
+range1 = [-5, 5]
+plt.plot(range1, init_m * np.array(range1) + init_b, 'g--')
+
+
+def cost(m, b, X, Y):
+    N = len(X)
+    cost = 0
+    for i in range(N):
+        cost = (Y[i] - (m * X[i] + b)) ** 2
+    return cost / N
+
+
+init_cost = cost(init_m, init_b, regressionData[0], regressionData[1])
+print(init_cost, type(init_cost))
+plt.title("cost={:.8f}".format(init_cost[0]))
+plt.show()
+
+
+def update_weight(m, b, X, Y, l):
+    m_deriv = 0
+    b_deriv = 0
+    N = len(X)
+    for i in range(N):
+        m_deriv += -2 * X[i] * (Y[i] - (m * X[i] + b))
+        b_deriv += -2 * (Y[i] - (m * X[i] + b))
+    m -= l * (m_deriv / N)
+    b -= l * (b_deriv / N)
+    return m, b
+
+
+current_m = init_m
+current_b = init_b
+for i in range(201):
+    new_m, new_b = update_weight(current_m, current_b, regressionData[0], regressionData[1], learning_rate)
+    print(new_m, new_b)
+    new_cost = cost(new_m, new_b, regressionData[0], regressionData[1])
+    if i % 10 == 0:
+        plt.plot(range1, new_m * range1 + new_b, 'g--')
+        plt.scatter(regressionData[0], regressionData[1], c='red', marker='.')
+        plt.title("[{}]cost={:.8f}".format(i, new_cost[0]))
+        plt.show()
+    print("cost={}".format(new_cost))
+    current_m = new_m
+    current_b = new_b
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from sklearn import datasets
+from matplotlib import pyplot as plt
+import numpy as np
+
+regressionData = datasets.make_regression(n_samples=1000, n_features=1, noise=5)
+# print(regressionData)
+# ^,
+plt.scatter(regressionData[0], regressionData[1], c='red', marker='.')
+
+init_m = 10
+init_b = 10
+learning_rate = 0.01
+range1 = [-5, 5]
+plt.plot(range1, init_m * np.array(range1) + init_b, 'g--')
+
+
+def cost(m, b, X, Y):
+    N = len(X)
+    cost = 0
+    for i in range(N):
+        cost += (Y[i] - (m * X[i] + b)) ** 2
+    return cost / N
+
+
+init_cost = cost(init_m, init_b, regressionData[0], regressionData[1])
+print(init_cost, type(init_cost))
+plt.title("cost={:.8f}".format(init_cost[0]))
+plt.show()
+
+
+def update_weight(m, b, X, Y, l):
+    m_deriv = 0
+    b_deriv = 0
+    N = len(X)
+    for i in range(N):
+        m_deriv += -2 * X[i] * (Y[i] - (m * X[i] + b))
+        b_deriv += -2 * (Y[i] - (m * X[i] + b))
+    m -= l * (m_deriv / N)
+    b -= l * (b_deriv / N)
+    return m, b
+
+
+current_m = init_m
+current_b = init_b
+for i in range(201):
+    new_m, new_b = update_weight(current_m, current_b, regressionData[0], regressionData[1], learning_rate)
+    print(new_m, new_b)
+    new_cost = cost(new_m, new_b, regressionData[0], regressionData[1])
+    if i % 10 == 0:
+        plt.plot(range1, new_m * range1 + new_b, 'g--')
+        plt.scatter(regressionData[0], regressionData[1], c='red', marker='.')
+        plt.title("[{}]cost={:.8f}".format(i, new_cost[0]))
+        plt.show()
+    print("cost={}".format(new_cost))
+    current_m = new_m
+    current_b = new_b
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from sklearn import datasets
+from matplotlib import pyplot as plt
+import numpy as np
+
+regressionData = datasets.make_regression(n_samples=1000, n_features=1, noise=5)
+# print(regressionData)
+# ^,
+plt.scatter(regressionData[0], regressionData[1], c='red', marker='.')
+
+init_m = 10
+init_b = 10
+learning_rate = 0.01
+range1 = [-5, 5]
+plt.plot(range1, init_m * np.array(range1) + init_b, 'g--')
+
+
+def cost(m, b, X, Y):
+    N = len(X)
+    cost = 0
+    for i in range(N):
+        cost += (Y[i] - (m * X[i] + b)) ** 2
+    return cost / N
+
+
+init_cost = cost(init_m, init_b, regressionData[0], regressionData[1])
+print(init_cost, type(init_cost))
+plt.title("cost={:.8f}".format(init_cost[0]))
+plt.show()
+
+
+def update_weight(m, b, X, Y, l):
+    m_deriv = 0
+    b_deriv = 0
+    N = len(X)
+    for i in range(N):
+        m_deriv += -2 * X[i] * (Y[i] - (m * X[i] + b))
+        b_deriv += -2 * (Y[i] - (m * X[i] + b))
+    m -= l * (m_deriv / N)
+    b -= l * (b_deriv / N)
+    return m, b
+
+
+current_m = init_m
+current_b = init_b
+for i in range(201):
+    new_m, new_b = update_weight(current_m, current_b, regressionData[0], regressionData[1], learning_rate)
+    print(new_m, new_b)
+    new_cost = cost(new_m, new_b, regressionData[0], regressionData[1])
+    if i % 10 == 0:
+        plt.plot(range1, new_m * range1 + new_b, 'g--')
+        plt.scatter(regressionData[0], regressionData[1], c='red', marker='.')
+        plt.title("[{}]cost={:.8f}".format(i, new_cost[0]))
+        plt.show()
+    print("cost={}".format(new_cost))
+    current_m = new_m
+    current_b = new_b
+
+
+https://www.kaggle.com/
