@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f301eecf-1031-4ca9-bc76-946b554a03f5" name="Changes" comment="2026-06-09 09:00~16:39">
+      <change afterPath="$PROJECT_DIR$/lab26_decision_tree.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab27_decision_tree2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab28.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab29_classifier3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab30.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab31_simple_kmeans.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab32.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab25_iris_pca.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab25_iris_pca.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,18 +26,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "mengqi1998"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;mengqi1998&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/mengqi1998/Kenras-Tensorflow.git",
-    "accountId": "cf4fd139-0f97-4cb4-b0b1-2d43eee68d74"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/mengqi1998/Kenras-Tensorflow.git&quot;,
+    &quot;accountId&quot;: &quot;cf4fd139-0f97-4cb4-b0b1-2d43eee68d74&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -64,8 +70,13 @@
     "Python.lab23_svc1.executor": "Run",
     "Python.lab24_classifiers.executor": "Run",
     "Python.lab25_iris_pca.executor": "Run",
+    "Python.lab26_decision_tree.executor": "Run",
+    "Python.lab27_decision_tree2.executor": "Run",
+    "Python.lab29_classifier3.executor": "Run",
     "Python.lab2_liner_regression.executor": "Run",
     "Python.lab2_matplotlib_review (1).executor": "Run",
+    "Python.lab30.executor": "Run",
+    "Python.lab31.executor": "Run",
     "Python.lab3_change_intercept.executor": "Run",
     "Python.lab4_change_coefficient.executor": "Run",
     "Python.lab5_regression1.executor": "Run",
@@ -87,8 +98,8 @@
       <recent name="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.lab25_iris_pca">
-    <configuration name="lab22" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.lab32">
+    <configuration name="lab26_decision_tree" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -102,7 +113,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab22.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab26_decision_tree.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -111,7 +122,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab22_classifiers" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab27_decision_tree2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -125,7 +136,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab22_classifiers.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab27_decision_tree2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -134,7 +145,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab23_svc1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab29_classifier3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -148,7 +159,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab23_svc1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab29_classifier3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -157,7 +168,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab24_classifiers" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab30" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -171,7 +182,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab24_classifiers.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab30.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -180,7 +191,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab25_iris_pca" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab32" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -194,7 +205,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab25_iris_pca.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs\lab32.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -205,11 +216,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.lab25_iris_pca" />
-        <item itemvalue="Python.lab24_classifiers" />
-        <item itemvalue="Python.lab23_svc1" />
-        <item itemvalue="Python.lab22_classifiers" />
-        <item itemvalue="Python.lab22" />
+        <item itemvalue="Python.lab32" />
+        <item itemvalue="Python.lab30" />
+        <item itemvalue="Python.lab29_classifier3" />
+        <item itemvalue="Python.lab27_decision_tree2" />
+        <item itemvalue="Python.lab26_decision_tree" />
       </list>
     </recent_temporary>
   </component>
@@ -295,6 +306,11 @@
           <url>file://$PROJECT_DIR$/main.py</url>
           <line>8</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lab26_decision_tree.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
