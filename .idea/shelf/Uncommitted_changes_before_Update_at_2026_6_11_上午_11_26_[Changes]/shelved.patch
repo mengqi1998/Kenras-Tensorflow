@@ -1,0 +1,40 @@
+Index: lab49_operations.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lab49_operations.py b/lab49_operations.py
+new file mode 100644
+--- /dev/null	(date 1781146388695)
++++ b/lab49_operations.py	(date 1781146388695)
+@@ -0,0 +1,11 @@
++
++from tensorflow.nn import relu, sigmoid, leaky_relu
++
++vectors = [3.0, -1.0, 2.4, 5.9, 0.001, -0.1, 8.5, 0.000000001, -0.00000001]
++
++r1 = relu(vectors)
++print(r1)
++r2 = sigmoid(vectors)
++print(r2)
++r3 = leaky_relu(vectors, alpha=0.1)
++print(r3)
+\ No newline at end of file
+Index: lab50_gradient1.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lab50_gradient1.py b/lab50_gradient1.py
+new file mode 100644
+--- /dev/null	(date 1781148349200)
++++ b/lab50_gradient1.py	(date 1781148349200)
+@@ -0,0 +1,7 @@
++from tensorflow import GradientTape, Variable
++
++x = Variable(10980.)
++with GradientTape() as tape:
++    y = 2 * x + 3
++    dydx = tape.gradient(y, x) #微分：不論x如何變化，微分後僅會保留2
++    print(dydx.numpy())
+\ No newline at end of file
