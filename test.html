@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美髮預約系統</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:20px;
+    background:#f5f5f5;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.tabs{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+button{
+    padding:10px 15px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.tab-btn{
+    background:#333;
+    color:white;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+input, select{
+    width:100%;
+    padding:8px;
+    margin:5px 0 15px;
+}
+
+.hidden{
+    display:none;
+}
+
+.booking-item{
+    border:1px solid #ddd;
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:5px;
+}
+
+.calendar{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:5px;
+}
+
+.day{
+    min-height:100px;
+    background:white;
+    border:1px solid #ddd;
+    padding:5px;
+}
+
+.booking{
+    background:#4caf50;
+    color:white;
+    padding:3px;
+    margin-top:3px;
+    border-radius:3px;
+    font-size:12px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="tabs">
+    <button class="tab-btn" onclick="showPage('customer')">顧客預約</button>
+    <button class="tab-btn" onclick="showPage('admin')">店家管理</button>
+</div>
+
+<!-- 顧客畫面 -->
+<div id="customerPage" class="card">
+
+    <h2>美髮預約</h2>
+
+    <input id="name" placeholder="姓名">
+
+    <input id="phone" placeholder="電話">
+
+    <select id="service">
+        <option>剪髮</option>
+        <option>染髮</option>
+        <option>燙髮</option>
+        <option>護髮</option>
+    </select>
+
+    <input type="date" id="date">
+
+    <input type="time" id="time">
+
+    <button onclick="submitBooking()">
+        送出預約
+    </button>
+
+</div>
+
+<!-- 店家畫面 -->
+<div id="adminPage" class="hidden">
+
+    <div class="card">
+        <h2>待確認預約</h2>
+        <div id="pendingList"></div>
+    </div>
+
+    <div class="card">
+        <h2>已確認行事曆</h2>
+        <div id="calendar" class="calendar"></div>
+    </div>
+
+</div>
+
+</div>
+
+<script>
+
+let pendingBookings = [];
+let confirmedBookings = [];
+
+function showPage(page){
+
+    document.getElementById('customerPage').classList.add('hidden');
+    document.getElementById('adminPage').classList.add('hidden');
+
+    if(page === 'customer'){
+        document.getElementById('customerPage').classList.remove('hidden');
+    }else{
+        document.getElementById('adminPage').classList.remove('hidden');
+    }
+}
+
+function submitBooking(){
+
+    const booking = {
+        id: Date.now(),
+        name: document.getElementById('name').value,
+        phone: document.getElementById('phone').value,
+        service: document.getElementById('service').value,
+        date: document.getElementById('date').value,
+        time: document.getElementById('time').value
+    };
+
+    if(!booking.name || !booking.phone || !booking.date || !booking.time){
+        alert("請填寫完整資料");
+        return;
+    }
+
+    pendingBookings.push(booking);
+
+    renderPending();
+
+    alert("預約已送出，等待店家確認");
+
+    document.getElementById('name').value='';
+    document.getElementById('phone').value='';
+}
+
+function renderPending(){
+
+    const container = document.getElementById('pendingList');
+
+    container.innerHTML='';
+
+    pendingBookings.forEach(item=>{
+
+        container.innerHTML += `
+        <div class="booking-item">
+            <strong>${item.name}</strong><br>
+            ${item.service}<br>
+            ${item.date} ${item.time}<br><br>
+
+            <button onclick="confirmBooking(${item.id})">
+                確認預約
+            </button>
+        </div>
+        `;
+    });
+}
+
+function confirmBooking(id){
+
+    const booking = pendingBookings.find(x=>x.id===id);
+
+    confirmedBookings.push(booking);
+
+    pendingBookings = pendingBookings.filter(x=>x.id!==id);
+
+    renderPending();
+    renderCalendar();
+}
+
+function renderCalendar(){
+
+    const calendar = document.getElementById('calendar');
+
+    calendar.innerHTML='';
+
+    for(let i=1;i<=31;i++){
+
+        const dayDiv = document.createElement('div');
+
+        dayDiv.className='day';
+
+        dayDiv.innerHTML=`<strong>${i}</strong>`;
+
+        confirmedBookings.forEach(book=>{
+
+            const bookingDay =
+                new Date(book.date).getDate();
+
+            if(bookingDay===i){
+
+                dayDiv.innerHTML += `
+                <div class="booking">
+                    ${book.time}<br>
+                    ${book.name}
+                </div>
+                `;
+            }
+        });
+
+        calendar.appendChild(dayDiv);
+    }
+}
+
+renderCalendar();
+
+</script>
+
+</body>
+</html>

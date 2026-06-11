@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f301eecf-1031-4ca9-bc76-946b554a03f5" name="Changes" comment="gradient">
+      <change afterPath="$PROJECT_DIR$/data/diabetes.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab56_diabetes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab56_load_diabetes.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab57_load_diabetes_split_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab57_validation_explain.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab58_keras_load_save.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab59.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab59_keras_split.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab55_gradient6.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab55_gradient6.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Jupyter Notebook" />
+        <option value="HTML File" />
         <option value="Python Script" />
       </list>
     </option>
@@ -46,6 +56,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.lab0_env_check.executor": "Run",
     "Python.lab10_matplotlib_depth.executor": "Run",
@@ -100,6 +111,12 @@
     "Python.lab53_gradient4.executor": "Run",
     "Python.lab54_gradient5.executor": "Run",
     "Python.lab55_gradient6.executor": "Run",
+    "Python.lab56.executor": "Run",
+    "Python.lab56_diabetes (1).executor": "Run",
+    "Python.lab57_load_diabetes_split_data.executor": "Run",
+    "Python.lab58_keras_load_save.executor": "Run",
+    "Python.lab59.executor": "Run",
+    "Python.lab59_keras_split.executor": "Run",
     "Python.lab5_regression1.executor": "Run",
     "Python.lab6_regression2.executor": "Run",
     "Python.lab7_matplotlib_review2.executor": "Run",
@@ -119,12 +136,13 @@
       <recent name="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs\data" />
       <recent name="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs" />
       <recent name="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs\logs" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.lab55_gradient6">
-    <configuration name="lab48" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.lab59">
+    <configuration name="lab56_diabetes (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -138,7 +156,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab48.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab56_diabetes.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -147,7 +165,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab50" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab57_load_diabetes_split_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -161,7 +179,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab50.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab57_load_diabetes_split_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -170,7 +188,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab49" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab58_keras_load_save" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -184,7 +202,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab49.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab58_keras_load_save.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -193,7 +211,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab54_gradient5" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab59" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -207,7 +225,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab54_gradient5.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab59.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -216,7 +234,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab55_gradient6" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab59_keras_split" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -230,7 +248,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab55_gradient6.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab59_keras_split.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -241,11 +259,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.lab55_gradient6" />
-        <item itemvalue="Python.lab49" />
-        <item itemvalue="Python.lab48" />
-        <item itemvalue="Python.lab50" />
-        <item itemvalue="Python.lab54_gradient5" />
+        <item itemvalue="Python.lab59" />
+        <item itemvalue="Python.lab59_keras_split" />
+        <item itemvalue="Python.lab58_keras_load_save" />
+        <item itemvalue="Python.lab57_load_diabetes_split_data" />
+        <item itemvalue="Python.lab56_diabetes (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -392,7 +410,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781155619087</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="gradient">
+      <option name="closed" value="true" />
+      <created>1781158624050</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1781158624050</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
