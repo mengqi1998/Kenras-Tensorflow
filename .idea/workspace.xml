@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f301eecf-1031-4ca9-bc76-946b554a03f5" name="Changes" comment="keras model">
-      <change afterPath="$PROJECT_DIR$/data/iris.data" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab60_kfold.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab61_cross_val_score.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab62_grid_search.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab63_iris_keras.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab64_load_imdb.py" afterDir="false" />
+    <list default="true" id="f301eecf-1031-4ca9-bc76-946b554a03f5" name="Changes" comment="kfold &amp; grid">
+      <change afterPath="$PROJECT_DIR$/lab65.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab66_softmax.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab67_calculate_magnitude.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab68_mnist_load.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab69_convert_one_hot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab70.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab62_grid_search.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/lab62_grid_search.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +117,12 @@
     "Python.lab59_keras_split.executor": "Run",
     "Python.lab5_regression1.executor": "Run",
     "Python.lab63_iris_keras.executor": "Run",
+    "Python.lab64_load_imdb.executor": "Run",
+    "Python.lab65.executor": "Run",
+    "Python.lab66_softmax.executor": "Run",
+    "Python.lab67_calculate_magnitude.executor": "Run",
+    "Python.lab68_mnist_load.executor": "Run",
+    "Python.lab69_convert_one_hot.executor": "Run",
     "Python.lab6_regression2.executor": "Run",
     "Python.lab7_matplotlib_review2.executor": "Run",
     "Python.lab8_list_array.executor": "Run",
@@ -140,8 +147,8 @@
       <recent name="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs\logs" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.lab64_load_imdb">
-    <configuration name="lab58_keras_load_save" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.lab68_mnist_load">
+    <configuration name="lab65" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -155,7 +162,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab58_keras_load_save.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab65.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -164,7 +171,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab59" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab66_softmax" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -178,7 +185,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab59.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab66_softmax.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -187,7 +194,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab59_keras_split" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab67_calculate_magnitude" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -201,7 +208,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab59_keras_split.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab67_calculate_magnitude.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -210,7 +217,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab63_iris_keras" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab68_mnist_load" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -224,7 +231,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab63_iris_keras.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab68_mnist_load.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -233,7 +240,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab64_load_imdb" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab69_convert_one_hot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -247,7 +254,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab64_load_imdb.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab69_convert_one_hot.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -258,11 +265,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.lab64_load_imdb" />
-        <item itemvalue="Python.lab63_iris_keras" />
-        <item itemvalue="Python.lab59" />
-        <item itemvalue="Python.lab59_keras_split" />
-        <item itemvalue="Python.lab58_keras_load_save" />
+        <item itemvalue="Python.lab68_mnist_load" />
+        <item itemvalue="Python.lab69_convert_one_hot" />
+        <item itemvalue="Python.lab67_calculate_magnitude" />
+        <item itemvalue="Python.lab66_softmax" />
+        <item itemvalue="Python.lab65" />
       </list>
     </recent_temporary>
   </component>
@@ -433,7 +440,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781168113207</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="kfold &amp; grid">
+      <option name="closed" value="true" />
+      <created>1781234013375</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1781234013375</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -461,7 +476,8 @@
     <MESSAGE value="add .gitignore to exclude output/ logs/" />
     <MESSAGE value="gradient" />
     <MESSAGE value="keras model" />
-    <option name="LAST_COMMIT_MESSAGE" value="keras model" />
+    <MESSAGE value="kfold &amp; grid" />
+    <option name="LAST_COMMIT_MESSAGE" value="kfold &amp; grid" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
