@@ -1,0 +1,752 @@
+﻿lab46_tensor_flow2.py
+
+import tensorflow as tf
+
+
+@tf.function
+def add(a, b):
+    return tf.math.add(a, b)
+
+
+print(add(3, 5))
+print(add([1, 2, 3, 4, 5], [9, 7, 5, 3, 1]))
+print(add([3, 11], [5, 1]))
+print(add([1.2, 2.4, 3.9], [4.4, 5.5, 6.9]))
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab47_tensorflow3.py
+
+import tensorflow as tf
+
+tf.compat.v1.disable_eager_execution()
+
+
+def computeArea(sides):
+    a = sides[:, 0]
+    b = sides[:, 1]
+    c = sides[:, 2]
+
+    s = (a + b + c) / 2
+    areaSquare = s * (s - a) * (s - b) * (s - c)
+    return areaSquare ** 0.5
+
+
+with tf.compat.v1.Session() as sess:
+    area = computeArea(tf.compat.v1.constant(
+        [[3.0, 4.0, 5.0],
+         [6.0, 6.0, 6.0],
+         [3.0, 4.0, 6.0]]
+    ))
+    result = sess.run(area)
+    print(result)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab48_tensorflow4.py
+
+import tensorflow as tf
+
+@tf.function
+def computeArea(sides):
+    a = sides[:, 0]
+    b = sides[:, 1]
+    c = sides[:, 2]
+    s = (a + b + c) / 2
+    areaSquare = s * (s - a) * (s - b) * (s - c)
+    return areaSquare ** 0.5
+
+
+area = computeArea(tf.constant(
+    [[3.0, 4.0, 5.0],
+     [6.0, 6.0, 6.0],
+     [3.0, 4.0, 6.0]]
+))
+
+print(area.numpy())
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+手動建立logs目錄
+
+import tensorflow as tf
+from datetime import datetime
+
+
+@tf.function
+def computeArea(sides):
+    a = sides[:, 0]
+    b = sides[:, 1]
+    c = sides[:, 2]
+    s = (a + b + c) / 2
+    areaSquare = s * (s - a) * (s - b) * (s - c)
+    return areaSquare ** 0.5
+
+
+timestamp1 = datetime.now().strftime("%Y%m%d-%H%M%S")
+logdir = 'logs/lab48/%s' % timestamp1
+
+print(logdir)
+
+area = computeArea(tf.constant(
+    [[3.0, 4.0, 5.0],
+     [6.0, 6.0, 6.0],
+     [3.0, 4.0, 6.0]]
+))
+
+print(area.numpy())
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import tensorflow as tf
+from datetime import datetime
+
+
+@tf.function
+def computeArea(sides):
+    a = sides[:, 0]
+    b = sides[:, 1]
+    c = sides[:, 2]
+    s = (a + b + c) / 2
+    areaSquare = s * (s - a) * (s - b) * (s - c)
+    return areaSquare ** 0.5
+
+
+timestamp1 = datetime.now().strftime("%Y%m%d-%H%M%S")
+logdir = 'logs/lab48/%s' % timestamp1
+
+print(logdir)
+writer = tf.summary.create_file_writer(logdir)
+tf.summary.trace_on(graph=True, profiler=True, profiler_outdir=logdir)
+area = computeArea(tf.constant(
+    [[3.0, 4.0, 5.0],
+     [6.0, 6.0, 6.0],
+     [3.0, 4.0, 6.0]]
+))
+
+print(area.numpy())
+with writer.as_default():
+    tf.summary.trace_export(name='heron formula', step=0)
+    tf.summary.trace_off()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+打開cmd
+pip install tensorboard
+pip install setuptools==81.0.0 
+tensorboard --logdir=logs
+
+ http://localhost:6006/
+
+import tensorflow as tf
+from datetime import datetime
+
+
+#@tf.function
+def computeArea(sides):
+    a = sides[:, 0]
+    b = sides[:, 1]
+    c = sides[:, 2]
+    s = (a + b + c) / 2
+    areaSquare = s * (s - a) * (s - b) * (s - c)
+    return areaSquare ** 0.5
+
+
+timestamp1 = datetime.now().strftime("%Y%m%d-%H%M%S")
+logdir = 'logs/lab48/%s' % timestamp1
+
+print(logdir)
+writer = tf.summary.create_file_writer(logdir)
+tf.summary.trace_on(graph=True, profiler=True, profiler_outdir=logdir)
+area = computeArea(tf.constant(
+    [[3.0, 4.0, 5.0],
+     [6.0, 6.0, 6.0],
+     [3.0, 4.0, 6.0]]
+))
+
+print(area.numpy())
+with writer.as_default():
+    tf.summary.trace_export(name='heron formula', step=0)
+    tf.summary.trace_off()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab49_operations
+
+
+from tensorflow.nn import relu, sigmoid, leaky_relu
+
+vectors = [3.0, -1.0, 2.4, 5.9, 0.001, -0.1, 8.5, 0.000000001, -0.00000001]
+
+r1 = relu(vectors)
+print(r1)
+r2 = sigmoid(vectors)
+print(r2)
+r3 = leaky_relu(vectors, alpha=0.1)
+print(r3)
+
+-----------------------------------------------
+
+lab50_gradient1
+from tensorflow import GradientTape, Variable
+
+x = Variable(10000.)
+with GradientTape() as tape:
+    y = 2 * x + 3
+    dydx = tape.gradient(y, x)
+    print(dydx.numpy())
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from tensorflow import GradientTape, Variable
+from tensorflow.random import uniform
+
+x = Variable(uniform((2, 2)))
+with GradientTape() as tape:
+    y = 5 * x ** 2 + 4
+    dydx = tape.gradient(y, x)
+    print("x=")
+    print(x.numpy())
+    print("dydx=")
+    print(dydx.numpy())
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from tensorflow import GradientTape, Variable, zeros, matmul
+from tensorflow.random import uniform
+
+W = Variable(uniform((1, 1)))
+b = Variable(zeros((1,)))
+x = uniform((1, 1))
+with GradientTape() as tape:
+    y = matmul(x, W) + 2 * b
+    dydwdb = tape.gradient(y, [W, b])
+print(W.numpy())
+print("x=", x.numpy())
+print(b.numpy())
+print(y.numpy())
+print("partial y/partial w", dydwdb[0].numpy())
+print("partial y/partial b", dydwdb[1].numpy())
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab53
+
+from tensorflow import GradientTape, Variable, zeros, matmul, constant, square
+from tensorflow.random import uniform
+
+x = constant(3.)
+# x = Variable(3.)
+with GradientTape() as tape:
+    tape.watch(x)
+    y = square(x)
+    dydx = tape.gradient(y, x)
+    print(dydx.numpy())
+
+
+lab54_gradient5
+from tensorflow import Variable, GradientTape
+
+time = Variable(5.)
+with GradientTape() as outerTape:
+    with GradientTape() as innerTape:
+        position = 4.9 * time ** 2
+        speed = innerTape.gradient(position, time)
+        print("speed=", speed.numpy())
+    a = outerTape.gradient(speed, time)
+    print("a=", a.numpy())
+
+
+.gitignore
+logs/
+output/
+.ipynb_checkpoints
+
+
+commit as ==> add .gitignore to exclude output/ logs/
+
+
+lab55_gradient6
+
+import numpy as np
+from matplotlib import pyplot as plt
+import tensorflow as tf
+
+NUM_SAMPLES_PER_CLASS = 1000
+
+negativeSamples = np.random.multivariate_normal(
+    mean=[0, 3], cov=[[1, 0.5], [0.5, 1]], size=NUM_SAMPLES_PER_CLASS
+)
+
+positiveSamples = np.random.multivariate_normal(
+    mean=[-3, 0], cov=[[1, 0.5], [0.5, 1]], size=NUM_SAMPLES_PER_CLASS
+)
+
+inputs = np.vstack((negativeSamples, positiveSamples)).astype(np.float32)
+
+negativeTargets = np.zeros((NUM_SAMPLES_PER_CLASS, 1), dtype=np.float32)
+positiveTargets = np.ones((NUM_SAMPLES_PER_CLASS, 1), dtype=np.float32)
+targets = np.vstack((negativeTargets, positiveTargets))
+
+plt.scatter(inputs[:, 0], inputs[:, 1], c=targets[:, 0])
+plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import numpy as np
+from matplotlib import pyplot as plt
+import tensorflow as tf
+
+NUM_SAMPLES_PER_CLASS = 1000
+
+negativeSamples = np.random.multivariate_normal(
+    mean=[0, 3], cov=[[1, 0.5], [0.5, 1]], size=NUM_SAMPLES_PER_CLASS
+)
+
+positiveSamples = np.random.multivariate_normal(
+    mean=[-3, 0], cov=[[1, 0.5], [0.5, 1]], size=NUM_SAMPLES_PER_CLASS
+)
+
+inputs = np.vstack((negativeSamples, positiveSamples)).astype(np.float32)
+
+negativeTargets = np.zeros((NUM_SAMPLES_PER_CLASS, 1), dtype=np.float32)
+positiveTargets = np.ones((NUM_SAMPLES_PER_CLASS, 1), dtype=np.float32)
+targets = np.vstack((negativeTargets, positiveTargets))
+
+plt.scatter(inputs[:, 0], inputs[:, 1], c=targets[:, 0])
+
+input_dim = 2
+output_dim = 1
+W = tf.Variable(np.random.uniform(size=(input_dim, output_dim)), dtype=tf.float32)
+b = tf.Variable(tf.zeros(shape=(output_dim,)))
+
+
+def model(inputs):
+    return tf.matmul(inputs, W) + b
+
+
+def square_loss(targets, predictions):
+    per_sample_losses = tf.square(targets - predictions)
+    return tf.reduce_mean(per_sample_losses)
+
+
+LEARNING_RATE = 0.01
+
+
+def training_step(inputs, targets):
+    with tf.GradientTape() as tape:
+        predictions = model(inputs)
+        loss = square_loss(targets, predictions)
+        d_loss_d_w, d_loss_d_b = tape.gradient(loss, [W, b])
+        W.assign_sub(d_loss_d_w * LEARNING_RATE)
+        b.assign_sub(d_loss_d_b * LEARNING_RATE)
+        return loss
+
+
+EPOCHS = 300
+for step in range(EPOCHS):
+    loss = training_step(inputs, targets)
+    print(f"loss at step:{step} value:{loss:.4f}")
+
+
+plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import numpy as np
+from matplotlib import pyplot as plt
+import tensorflow as tf
+
+NUM_SAMPLES_PER_CLASS = 1000
+
+negativeSamples = np.random.multivariate_normal(
+    mean=[0, 3], cov=[[1, 0.5], [0.5, 1]], size=NUM_SAMPLES_PER_CLASS
+)
+
+positiveSamples = np.random.multivariate_normal(
+    mean=[-3, 0], cov=[[1, 0.5], [0.5, 1]], size=NUM_SAMPLES_PER_CLASS
+)
+
+inputs = np.vstack((negativeSamples, positiveSamples)).astype(np.float32)
+
+negativeTargets = np.zeros((NUM_SAMPLES_PER_CLASS, 1), dtype=np.float32)
+positiveTargets = np.ones((NUM_SAMPLES_PER_CLASS, 1), dtype=np.float32)
+targets = np.vstack((negativeTargets, positiveTargets))
+
+plt.scatter(inputs[:, 0], inputs[:, 1], c=targets[:, 0])
+plt.title("generated real data")
+input_dim = 2
+output_dim = 1
+W = tf.Variable(np.random.uniform(size=(input_dim, output_dim)), dtype=tf.float32)
+b = tf.Variable(tf.zeros(shape=(output_dim,)))
+
+
+def model(inputs):
+    return tf.matmul(inputs, W) + b
+
+
+def square_loss(targets, predictions):
+    per_sample_losses = tf.square(targets - predictions)
+    return tf.reduce_mean(per_sample_losses)
+
+
+LEARNING_RATE = 0.01
+
+
+def training_step(inputs, targets):
+    with tf.GradientTape() as tape:
+        predictions = model(inputs)
+        loss = square_loss(targets, predictions)
+        d_loss_d_w, d_loss_d_b = tape.gradient(loss, [W, b])
+        W.assign_sub(d_loss_d_w * LEARNING_RATE)
+        b.assign_sub(d_loss_d_b * LEARNING_RATE)
+        return loss
+
+
+EPOCHS = 300
+for step in range(EPOCHS):
+    loss = training_step(inputs, targets)
+    print(f"loss at step:{step} value:{loss:.4f}")
+
+predictions = model(inputs)
+x = np.linspace(-7, 3, 100)
+plt.figure(2)
+# W[0]x + W[1]y+b = y
+# W[0]x + W[1]y+b = 0.5
+y1 = (0.5 - b) / W[1] - W[0] / W[1] * x
+y2 = (0 - b) / W[1] - W[0] / W[1] * x
+y3 = (1 - b) / W[1] - W[0] / W[1] * x
+plt.plot(x, y1, 'r')
+plt.plot(x, y2, 'g--')
+plt.plot(x, y3, 'g--')
+plt.scatter(inputs[:, 0], inputs[:, 1], c=predictions[:, 0] > 0.5)
+plt.title("mse predict result")
+plt.show()
+
+
+
+https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database
+
+download archive, unzip, copy diabetes.csv to data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import numpy as np
+
+dataset1 = np.loadtxt('data/diabetes.csv', delimiter=',', skiprows=1)
+print(type(dataset1), dataset1.shape)
+
+inputList = dataset1[:, :8]
+resultList = dataset1[:, 8]
+print(inputList.shape, resultList.shape)
+print(inputList.dtype, resultList.dtype)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import numpy as np
+from keras.models import Sequential
+from keras.layers import Dense, Input
+
+dataset1 = np.loadtxt('data/diabetes.csv', delimiter=',', skiprows=1)
+print(type(dataset1), dataset1.shape)
+
+inputList = dataset1[:, :8]
+resultList = dataset1[:, 8]
+print(inputList.shape, resultList.shape)
+print(inputList.dtype, resultList.dtype)
+
+model = Sequential()
+model.add(Input(shape=(8,)))
+model.add(Dense(14, activation='relu'))
+model.add(Dense(10, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+model.summary()
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import numpy as np
+from keras.models import Sequential
+from keras.layers import Dense, Input
+
+dataset1 = np.loadtxt('data/diabetes.csv', delimiter=',', skiprows=1)
+print(type(dataset1), dataset1.shape)
+
+inputList = dataset1[:, :8]
+resultList = dataset1[:, 8]
+print(inputList.shape, resultList.shape)
+print(inputList.dtype, resultList.dtype)
+
+model = Sequential()
+model.add(Input(shape=(8,)))
+model.add(Dense(14, activation='relu'))
+model.add(Dense(10, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+model.summary()
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+model.fit(inputList, resultList, epochs=300, batch_size=20)
+
+---------------
+under cmd
+jupyter-notebook
+
+
+lab56_load_diabetes.ipynb
+----------------------------
+COPY_PASTE origin .py
+---------------------------
+scores = model.evaluate(inputList, resultList)
+print(model.metrics_names)
+scores
+--------------------------
+print(model.metrics_names[1], scores[1])
+print('accuracy', scores[1])
+print(model.metrics_names[0], scores[0])
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab57_load_diabetes_split_data.py
+
+
+import numpy as np
+from keras.models import Sequential
+from keras.layers import Dense, Input
+
+dataset1 = np.loadtxt('data/diabetes.csv', delimiter=',', skiprows=1)
+print(type(dataset1), dataset1.shape)
+
+inputList = dataset1[:, :8]
+resultList = dataset1[:, 8]
+print(inputList.shape, resultList.shape)
+print(inputList.dtype, resultList.dtype)
+
+model = Sequential()
+model.add(Input(shape=(8,)))
+model.add(Dense(14, activation='relu'))
+model.add(Dense(10, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+model.summary()
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+model.fit(inputList, resultList, validation_split=0.2, epochs=300, batch_size=20)
+
+
+---------------------------------------------------
+lab58_keras_load_save.py
+
+
+import numpy as np
+from keras.models import Sequential, save_model, load_model
+from keras.layers import Dense, Input
+
+dataset1 = np.loadtxt('data/diabetes.csv', delimiter=',', skiprows=1)
+print(type(dataset1), dataset1.shape)
+
+inputList = dataset1[:, :8]
+resultList = dataset1[:, 8]
+print(inputList.shape, resultList.shape)
+print(inputList.dtype, resultList.dtype)
+
+
+def createModel():
+    m = Sequential()
+    m.add(Input(shape=(8,)))
+    m.add(Dense(14, activation='relu'))
+    m.add(Dense(10, activation='relu'))
+    m.add(Dense(1, activation='sigmoid'))
+    m.summary()
+    m.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    return m
+
+
+model = createModel()
+
+model.fit(inputList, resultList, epochs=300, batch_size=20, verbose=0)
+scores = model.evaluate(inputList, resultList)
+print("訓練過的model")
+print(scores)
+# 手動建立models的目錄
+save_model(model, 'models/lab58.keras')
+
+model2 = createModel()
+scores2 = model2.evaluate(inputList, resultList)
+print("初始化未訓練的模型")
+print(scores2)
+
+model3 = load_model('models/lab58.keras')
+scores3 = model3.evaluate(inputList, resultList)
+print("未訓練直接載入訓練好的模型")
+print(scores3)
+-----------------------------------
+pip install pydot
+
+import numpy as np
+from keras.models import Sequential, save_model, load_model
+from keras.layers import Dense, Input
+from keras.utils import plot_model
+
+dataset1 = np.loadtxt('data/diabetes.csv', delimiter=',', skiprows=1)
+print(type(dataset1), dataset1.shape)
+
+inputList = dataset1[:, :8]
+resultList = dataset1[:, 8]
+print(inputList.shape, resultList.shape)
+print(inputList.dtype, resultList.dtype)
+
+
+def createModel():
+    m = Sequential()
+    m.add(Input(shape=(8,)))
+    m.add(Dense(14, activation='relu'))
+    m.add(Dense(10, activation='relu'))
+    m.add(Dense(1, activation='sigmoid'))
+    m.summary()
+    m.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    return m
+
+
+model = createModel()
+
+model.fit(inputList, resultList, epochs=300, batch_size=20, verbose=0)
+scores = model.evaluate(inputList, resultList)
+print("訓練過的model")
+print(scores)
+# 手動建立models的目錄
+save_model(model, 'models/lab58.keras')
+
+model2 = createModel()
+scores2 = model2.evaluate(inputList, resultList)
+print("初始化未訓練的模型")
+print(scores2)
+
+model3 = load_model('models/lab58.keras')
+scores3 = model3.evaluate(inputList, resultList)
+print("未訓練直接載入訓練好的模型")
+print(scores3)
+
+plot_model(model3, 'output/lab58_model3.png', show_shapes=True, show_layer_names=True)
+
+---------------------------
+lab57_validation_explain.ipynb
+
+----------------
+import numpy as np
+from keras.models import Sequential
+from keras.layers import Dense, Input
+
+dataset1 = np.loadtxt('data/diabetes.csv', delimiter=',', skiprows=1)
+print(type(dataset1), dataset1.shape)
+
+inputList = dataset1[:, :8]
+resultList = dataset1[:, 8]
+print(inputList.shape, resultList.shape)
+print(inputList.dtype, resultList.dtype)
+
+model = Sequential()
+model.add(Input(shape=(8,)))
+model.add(Dense(14, activation='relu'))
+model.add(Dense(10, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+model.summary()
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['acc'])
+
+history = model.fit(inputList, resultList, validation_split=0.2, epochs=300, batch_size=20)
+------------------
+
+
+from matplotlib import pyplot as plt
+history.history.keys()
+plt.plot(history.history['acc'])
+plt.plot(history.history['val_acc'])
+plt.legend(["train",'validation'])
+
+--------------------
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.axis([0,300,0,0.9])
+======================================
+lab59_keras_split.py
+
+import numpy as np
+from keras.models import Sequential, save_model, load_model
+from keras.layers import Dense, Input
+from keras.utils import plot_model
+from sklearn.model_selection import train_test_split
+
+dataset1 = np.loadtxt('data/diabetes.csv', delimiter=',', skiprows=1)
+print(type(dataset1), dataset1.shape)
+
+inputList = dataset1[:, :8]
+resultList = dataset1[:, 8]
+print(inputList.shape, resultList.shape)
+print(inputList.dtype, resultList.dtype)
+
+# split data
+feature_train, feature_test, label_train, label_test = train_test_split(inputList, resultList, test_size=0.2,
+                                                                        stratify=resultList)
+print(feature_train.shape, feature_test.shape, label_train.shape, label_test.shape)
+
+# validate ratio
+for data in [resultList, label_train, label_test]:
+    classes, counts = np.unique(data, return_counts=True)
+    for cl, co in zip(classes, counts):
+        print(f"類別:{int(cl)}, 個數是:{co / sum(counts):.3f}")
+
+
+def createModel():
+    m = Sequential()
+    m.add(Input(shape=(8,)))
+    m.add(Dense(14, activation='relu'))
+    m.add(Dense(10, activation='relu'))
+    m.add(Dense(1, activation='sigmoid'))
+    m.summary()
+    m.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    return m
+
+
+model = createModel()
+#
+# model.fit(inputList, resultList, epochs=300, batch_size=20, verbose=0)
+# scores = model.evaluate(inputList, resultList)
+# print("訓練過的model")
+# print(scores)
+# # 手動建立models的目錄
+# save_model(model, 'models/lab58.keras')
+#
+# model2 = createModel()
+# scores2 = model2.evaluate(inputList, resultList)
+# print("初始化未訓練的模型")
+# print(scores2)
+#
+# model3 = load_model('models/lab58.keras')
+# scores3 = model3.evaluate(inputList, resultList)
+# print("未訓練直接載入訓練好的模型")
+# print(scores3)
+#
+# plot_model(model3, 'output/lab58_model3.png', show_shapes=True, show_layer_names=True)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab59
+
+import numpy as np
+from keras.models import Sequential, save_model, load_model
+from keras.layers import Dense, Input
+from keras.utils import plot_model
+from sklearn.model_selection import train_test_split
+
+dataset1 = np.loadtxt('data/diabetes.csv', delimiter=',', skiprows=1)
+print(type(dataset1), dataset1.shape)
+
+inputList = dataset1[:, :8]
+resultList = dataset1[:, 8]
+print(inputList.shape, resultList.shape)
+print(inputList.dtype, resultList.dtype)
+
+# split data
+feature_train, feature_test, label_train, label_test = train_test_split(inputList, resultList, test_size=0.2,
+                                                                        stratify=resultList)
+print(feature_train.shape, feature_test.shape, label_train.shape, label_test.shape)
+
+# validate ratio
+for data in [resultList, label_train, label_test]:
+    classes, counts = np.unique(data, return_counts=True)
+    for cl, co in zip(classes, counts):
+        print(f"類別:{int(cl)}, 個數是:{co / sum(counts):.3f}")
+
+
+def createModel():
+    m = Sequential()
+    m.add(Input(shape=(8,)))
+    m.add(Dense(14, activation='relu'))
+    m.add(Dense(10, activation='relu'))
+    m.add(Dense(1, activation='sigmoid'))
+    m.summary()
+    m.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    return m
+
+
+model = createModel()
+
+model.fit(feature_train, label_train, epochs=300, batch_size=20,
+          validation_data=(feature_test, label_test),
+          verbose=1)
+scores = model.evaluate(feature_test, label_test)
+print("訓練過的model")
+print(model.metrics_names)
+print(scores)
+
+
+pip install scikeras
