@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f301eecf-1031-4ca9-bc76-946b554a03f5" name="Changes" comment="gradient">
-      <change afterPath="$PROJECT_DIR$/data/diabetes.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab56_diabetes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab56_load_diabetes.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab57_load_diabetes_split_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab57_validation_explain.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab58_keras_load_save.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab59.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab59_keras_split.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
+    <list default="true" id="f301eecf-1031-4ca9-bc76-946b554a03f5" name="Changes" comment="keras model">
+      <change afterPath="$PROJECT_DIR$/data/iris.data" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab60_kfold.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab61_cross_val_score.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab62_grid_search.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab63_iris_keras.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab64_load_imdb.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jupyter Notebook" />
         <option value="HTML File" />
+        <option value="Jupyter Notebook" />
         <option value="Python Script" />
       </list>
     </option>
@@ -118,6 +115,7 @@
     "Python.lab59.executor": "Run",
     "Python.lab59_keras_split.executor": "Run",
     "Python.lab5_regression1.executor": "Run",
+    "Python.lab63_iris_keras.executor": "Run",
     "Python.lab6_regression2.executor": "Run",
     "Python.lab7_matplotlib_review2.executor": "Run",
     "Python.lab8_list_array.executor": "Run",
@@ -127,12 +125,13 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Admin/PycharmProjects/PythonProject/PYKT2026Jun08Labs",
+    "last_opened_file_path": "C:/Users/Admin/PycharmProjects/PythonProject/PYKT2026Jun08Labs/data",
     "settings.editor.selected.configurable": "terminal"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs\data" />
       <recent name="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -141,53 +140,7 @@
       <recent name="C:\Users\Admin\PycharmProjects\PythonProject\PYKT2026Jun08Labs\logs" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.lab59">
-    <configuration name="lab56_diabetes (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PYKT2026Jun08Labs" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab56_diabetes.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="lab57_load_diabetes_split_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PYKT2026Jun08Labs" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab57_load_diabetes_split_data.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.lab64_load_imdb">
     <configuration name="lab58_keras_load_save" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PYKT2026Jun08Labs" />
       <option name="ENV_FILES" value="" />
@@ -257,13 +210,59 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="lab63_iris_keras" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYKT2026Jun08Labs" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab63_iris_keras.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lab64_load_imdb" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PYKT2026Jun08Labs" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab64_load_imdb.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.lab64_load_imdb" />
+        <item itemvalue="Python.lab63_iris_keras" />
         <item itemvalue="Python.lab59" />
         <item itemvalue="Python.lab59_keras_split" />
         <item itemvalue="Python.lab58_keras_load_save" />
-        <item itemvalue="Python.lab57_load_diabetes_split_data" />
-        <item itemvalue="Python.lab56_diabetes (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -418,7 +417,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781158624050</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="keras model">
+      <option name="closed" value="true" />
+      <created>1781168105752</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1781168105752</updated>
+    </task>
+    <task id="LOCAL-00019" summary="keras model">
+      <option name="closed" value="true" />
+      <created>1781168113207</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1781168113207</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -445,7 +460,8 @@
     <MESSAGE value="tensorflow board" />
     <MESSAGE value="add .gitignore to exclude output/ logs/" />
     <MESSAGE value="gradient" />
-    <option name="LAST_COMMIT_MESSAGE" value="gradient" />
+    <MESSAGE value="keras model" />
+    <option name="LAST_COMMIT_MESSAGE" value="keras model" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
