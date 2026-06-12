@@ -1,0 +1,674 @@
+﻿https://survey.uuu.com.tw/
+
+26020
+
+https://survey.uuu.com.tw/survey_keyin.aspx?class_id=26020&course_id=PyKT
+
+
+copy lab56 lab60
+lab60_kfold.py
+
+import numpy as np
+from keras.models import Sequential
+from keras.layers import Dense, Input
+from sklearn.model_selection import StratifiedKFold
+
+dataset1 = np.loadtxt('data/diabetes.csv', delimiter=',', skiprows=1)
+
+inputList = dataset1[:, :8]
+resultList = dataset1[:, 8]
+
+fiveFold = StratifiedKFold(n_splits=5, shuffle=True)
+
+totalScores = []
+
+
+def createModel():
+    m = Sequential()
+    m.add(Input(shape=(8,)))
+    m.add(Dense(14, activation='relu'))
+    m.add(Dense(10, activation='relu'))
+    m.add(Dense(1, activation='sigmoid'))
+    m.summary()
+    m.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    return m
+
+
+for train, test in fiveFold.split(inputList, resultList):
+    model = createModel()
+    model.fit(inputList[train], resultList[train], epochs=300, batch_size=20, verbose=0)
+    scores = model.evaluate(inputList[test], resultList[test], verbose=1)
+    totalScores.append(scores[1] * 100)
+    print("get a result=%.3f%%" % (scores[1] * 100))
+print("average={},std={}".format(np.mean(totalScores), np.std(totalScores)))
+
+
+lab61_cross_val_score
+
+import numpy as np
+from keras.models import Sequential
+from keras.layers import Dense, Input
+from sklearn.model_selection import StratifiedKFold, cross_val_score
+from scikeras.wrappers import KerasClassifier
+
+dataset1 = np.loadtxt('data/diabetes.csv', delimiter=',', skiprows=1)
+
+inputList = dataset1[:, :8]
+resultList = dataset1[:, 8]
+
+
+def createModel():
+    m = Sequential()
+    m.add(Input(shape=(8,)))
+    m.add(Dense(14, activation='relu'))
+    m.add(Dense(10, activation='relu'))
+    m.add(Dense(1, activation='sigmoid'))
+    m.summary()
+    m.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    return m
+
+
+model = KerasClassifier(model=createModel, epochs=300, batch_size=20, verbose=0)
+fiveFold = StratifiedKFold(n_splits=5, shuffle=True)
+result = cross_val_score(model, inputList, resultList, cv=fiveFold)
+print("mean=%.3f, std=%.3f"%(result.mean(), result.std()))
+
+
+lab62_grid_search.py
+
+open terminal
+jupyter-notebook
+
+
+import numpy as np
+from keras.models import Sequential
+from keras.layers import Dense, Input
+from sklearn.model_selection import StratifiedKFold, cross_val_score, GridSearchCV
+from scikeras.wrappers import KerasClassifier
+
+dataset1 = np.loadtxt('data/diabetes.csv', delimiter=',', skiprows=1)
+
+inputList = dataset1[:, :8]
+resultList = dataset1[:, 8]
+
+
+def createModel(optimizer='adam',init='uniform'):
+    m = Sequential()
+    m.add(Input(shape=(8,)))
+    m.add(Dense(14, activation='relu', kernel_initializer=init))
+    m.add(Dense(10, activation='relu'))
+    m.add(Dense(1, activation='sigmoid'))
+    m.summary()
+    m.compile(optimizer=optimizer, loss='binary_crossentropy', metrics=['accuracy'])
+    return m
+
+
+model = KerasClassifier(model=createModel, verbose=0,init='uniform',optimizer='adam')
+optimizers = ['rmsprop', 'adam', 'sgd']
+inits = ['normal','uniform']
+epochs=[50,100,150]
+batches = [5,10,15]
+param_grid = dict(optimizer=optimizers, epochs=epochs, batch_size=batches, init=inits)
+grid = GridSearchCV(estimator=model, param_grid=param_grid)
+grid_result = grid.fit(inputList, resultList)
+
+check iris data directory
+https://archive.ics.uci.edu/dataset/53/iris
+unzip iris
+copy iris.data to data\
+
+
+lab63_iris_keras
+
+from pandas import read_csv
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+from keras.utils import to_categorical
+
+dataFrame = read_csv('data/iris.data', header=None)
+print(dataFrame.shape)
+dataset = dataFrame.values
+print(type(dataset))
+print(dataset.shape)
+features = dataset[:, 0:4].astype(float)
+labels = dataset[:, 4]
+print(features.shape)
+print(labels.shape)
+print(np.unique(labels))
+
+encoder = LabelEncoder()
+encoder.fit(labels)
+encoded_Y = encoder.transform(labels)
+print(np.unique(encoded_Y))
+dummy_y = to_categorical(encoded_Y)
+print(dummy_y[:10])
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from pandas import read_csv
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+from keras.utils import to_categorical
+from keras.models import Sequential
+from keras.layers import Dense, Input
+
+dataFrame = read_csv('data/iris.data', header=None)
+print(dataFrame.shape)
+dataset = dataFrame.values
+print(type(dataset))
+print(dataset.shape)
+features = dataset[:, 0:4].astype(float)
+labels = dataset[:, 4]
+print(features.shape)
+print(labels.shape)
+print(np.unique(labels))
+
+encoder = LabelEncoder()
+encoder.fit(labels)
+encoded_Y = encoder.transform(labels)
+print(np.unique(encoded_Y))
+dummy_y = to_categorical(encoded_Y)
+print(dummy_y[:10])
+
+
+def baseline_model():
+    m = Sequential()
+    m.add(Input(shape=(4,)))
+    m.add(Dense(8, activation='relu'))
+    m.add(Dense(3, activation='softmax'))
+    m.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    m.summary()
+    return m
+model = baseline_model()
+----------------------------------------
+pip install pandas-stubs
+-------------------------------------
+from pandas import read_csv
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+from keras.utils import to_categorical
+from keras.models import Sequential
+from keras.layers import Dense, Input
+from scikeras.wrappers import KerasClassifier
+from sklearn.model_selection import KFold, cross_val_score
+
+dataFrame = read_csv('data/iris.data', header=None)
+print(dataFrame.shape)
+dataset = dataFrame.values
+print(type(dataset))
+print(dataset.shape)
+features = dataset[:, 0:4].astype(float)
+labels = dataset[:, 4]
+print(features.shape)
+print(labels.shape)
+print(np.unique(labels))
+
+encoder = LabelEncoder()
+encoder.fit(labels)
+encoded_Y = encoder.transform(labels)
+print(np.unique(encoded_Y))
+dummy_y = to_categorical(encoded_Y)
+print(dummy_y[:10])
+
+
+def baseline_model():
+    m = Sequential()
+    m.add(Input(shape=(4,)))
+    m.add(Dense(8, activation='relu'))
+    m.add(Dense(3, activation='softmax'))
+    m.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    m.summary()
+    return m
+
+
+model = baseline_model()
+
+estimator = KerasClassifier(model=baseline_model(),
+                            epochs=800, batch_size=10, verbose=0)
+Kfold = KFold(n_splits=3, shuffle=True)
+results = cross_val_score(estimator, features, dummy_y, cv=Kfold)
+print("Acc: %.4f%%, std:%.4f"%(results.mean()*100, results.std()))
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab64_load_imdb
+
+import numpy
+from keras.datasets import imdb
+from matplotlib import pyplot as plt
+
+(X_train, y_train), (X_test, y_test) = imdb.load_data()
+X = numpy.concatenate((X_train, X_test), axis=0)
+Y = numpy.concatenate((y_train, y_test), axis=0)
+print(X.shape, Y.shape)
+print(numpy.unique(Y))
+print(len(numpy.unique(numpy.hstack(X))))
+result = [len(x) for x in X]
+print("長度的mean={}, std={}".format(numpy.mean(result), numpy.std(result)))
+
+plt.subplot(1, 2, 1)
+plt.boxplot(result)
+plt.subplot(1, 2, 2)
+plt.hist(result)
+plt.show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab65
+
+from keras.datasets import imdb
+
+(train_data, train_labels), (test_data, test_labels) = imdb.load_data()
+
+word_index = imdb.get_word_index()
+reverse_word_index = dict([(v, k) for (k, v) in word_index.items()])
+
+# get first sentence
+print(train_data[0])
+
+for j in range(5):
+    decoded_review = ' '.join([reverse_word_index.get(i-3, '?') for i in train_data[j]])
+    print(decoded_review)
+print(train_labels[:5])
+
+
+lab66
+import numpy as np
+from tensorflow.nn import softmax
+
+scores = [3.0, 1.0, 2.0]
+
+
+def noSoftMax(x):
+    ax = np.array(x)
+    return ax / np.sum(ax)
+
+
+print(noSoftMax(scores))
+
+
+def mySoftMax(x):
+    ax = np.array(x)
+    aex = np.exp(ax)
+    return aex / np.sum(aex)
+
+
+print(mySoftMax(scores))
+
+print(softmax(np.array(scores)).numpy())
+
+scores2 = [8.0, 1.0, 1.0]
+print(softmax(np.array(scores2)).numpy())
+
+
+lab67_calculate_magnitude
+# y=1000 OK
+y = 100000000
+
+
+def calculate(x):
+    for _ in range(0, 1000000):
+        x += 0.0000001
+    x -= 0.1
+    return x
+
+
+print('%.6f' % calculate(y))
+
+
+lab68_mnist_load
+
+
+from matplotlib import pyplot as plt
+import tensorflow as tf
+from keras.datasets import mnist
+
+(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+print("train data shape:", train_images.shape)
+print("train target shape:", train_labels.shape)
+print("test data shape:", test_images.shape)
+print("test target shape:", test_labels.shape)
+
+
+def plotImage(index):
+    plt.title("[%d]Train image: %d" % (index, train_labels[index]))
+    plt.imshow(train_images[index], cmap='binary')
+    plt.show()
+
+
+def plotTestImage(index):
+    plt.title("[%d]Test test image: %d" % (index, test_labels[index]))
+    plt.imshow(test_images[index], cmap='binary')
+    plt.show()
+
+plotTestImage(9999)
+plotTestImage(9998)
+plotImage(1)
+plotImage(10)
+
+
+lab69_convert_one_hot
+
+from keras.utils import to_categorical
+
+origin_numbers = [1, 2, 5, 8, 9]
+NUM_DIGIT = 10
+converted = to_categorical(origin_numbers, NUM_DIGIT)
+print(converted)
+
+NUM_DIGIT2 = 20
+converted2 = to_categorical(origin_numbers, NUM_DIGIT2)
+print(converted2)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab70
+
+from keras.datasets import mnist
+import tensorflow as tf
+import numpy as np
+from keras.utils import to_categorical
+from lab69_convert_one_hot import NUM_DIGIT
+
+(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+FLATTEN_DIM = 28 * 28
+TRAINING_SIZE = len(train_images)
+TESTING_SIZE = len(test_images)
+
+trainImages = np.reshape(train_images, (TRAINING_SIZE, FLATTEN_DIM))
+testImages = np.reshape(test_images, (TESTING_SIZE, FLATTEN_DIM))
+print(type(trainImages[0]), trainImages[0].shape)
+print(trainImages[0])
+trainImages = trainImages.astype(np.float32)
+testImages = testImages.astype(np.float32)
+print(trainImages[0])
+trainImages /= 255
+testImages /= 200
+NUM_DIGITS = 10
+
+trainLabels = to_categorical(train_labels, NUM_DIGITS)
+testLabels = to_categorical(test_labels, NUM_DIGITS)
+print(train_labels[:5])
+print(trainLabels[:5])
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from keras.datasets import mnist
+import tensorflow as tf
+from tensorflow.nn import relu, softmax
+import numpy as np
+from keras.utils import to_categorical
+from keras.models import Sequential
+from keras.layers import Dense, Input
+
+from lab69_convert_one_hot import NUM_DIGIT
+
+(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+FLATTEN_DIM = 28 * 28
+TRAINING_SIZE = len(train_images)
+TESTING_SIZE = len(test_images)
+
+trainImages = np.reshape(train_images, (TRAINING_SIZE, FLATTEN_DIM))
+testImages = np.reshape(test_images, (TESTING_SIZE, FLATTEN_DIM))
+print(type(trainImages[0]), trainImages[0].shape)
+print(trainImages[0])
+trainImages = trainImages.astype(np.float32)
+testImages = testImages.astype(np.float32)
+print(trainImages[0])
+trainImages /= 255
+testImages /= 200
+NUM_DIGITS = 10
+
+trainLabels = to_categorical(train_labels, NUM_DIGITS)
+testLabels = to_categorical(test_labels, NUM_DIGITS)
+print(train_labels[:5])
+print(trainLabels[:5])
+
+model = Sequential()
+model.add(Input(shape=(FLATTEN_DIM,)))
+model.add(Dense(128, activation=relu))
+model.add(Dense(10, activation=softmax))
+model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
+model.summary()
+
+model.fit(trainImages, trainLabels, batch_size=32, epochs=100, verbose=1)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+back to 62 grid_search
+-----------------------------
+print("best score={}, parameter={}".format(grid_result.best_score_, grid_result.best_params_))
+--------------------------------
+params = grid_result.cv_results_['params']
+means = grid_result.cv_results_['mean_test_score']
+std = grid_result.cv_results_['std_test_score']
+for m, s, p in zip(means, std, params):
+    print("%s mean=%.4f, std=%.4f"%(p,m,s))
+
+open cmd (under pycharm)
+execute:
+tensorboard --logdir=logs
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from keras.datasets import mnist
+import tensorflow as tf
+from tensorflow.nn import relu, softmax
+import numpy as np
+from keras.utils import to_categorical
+from keras.models import Sequential
+from keras.layers import Dense, Input
+from keras.callbacks import TensorBoard
+
+from lab69_convert_one_hot import NUM_DIGIT
+
+(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+FLATTEN_DIM = 28 * 28
+TRAINING_SIZE = len(train_images)
+TESTING_SIZE = len(test_images)
+
+trainImages = np.reshape(train_images, (TRAINING_SIZE, FLATTEN_DIM))
+testImages = np.reshape(test_images, (TESTING_SIZE, FLATTEN_DIM))
+print(type(trainImages[0]), trainImages[0].shape)
+print(trainImages[0])
+trainImages = trainImages.astype(np.float32)
+testImages = testImages.astype(np.float32)
+print(trainImages[0])
+trainImages /= 255
+testImages /= 200
+NUM_DIGITS = 10
+
+trainLabels = to_categorical(train_labels, NUM_DIGITS)
+testLabels = to_categorical(test_labels, NUM_DIGITS)
+print(train_labels[:5])
+print(trainLabels[:5])
+
+model = Sequential()
+model.add(Input(shape=(FLATTEN_DIM,)))
+model.add(Dense(128, activation=relu))
+model.add(Dense(10, activation=softmax))
+model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
+model.summary()
+tb = TensorBoard(log_dir='logs/lab70', histogram_freq=0, write_graph=True, write_images=True)
+model.fit(trainImages, trainLabels, batch_size=32, epochs=100, verbose=1,
+          callbacks=[tb])
+
+predictLabels = np.argmax(model.predict(testImages), axis=-1)
+print(predictLabels[:20])
+
+loss, accuracy = model.evaluate(testImages, testLabels)
+print("loss=", loss)
+print("accuracy=", accuracy)
+
+lab70_mnist1
+----------------------
+from keras.datasets import mnist
+import tensorflow as tf
+from tensorflow.nn import relu, softmax
+import numpy as np
+from keras.utils import to_categorical
+from keras.models import Sequential
+from keras.layers import Dense, Input
+from tensorflow.keras.callbacks import TensorBoard
+
+from lab69_convert_one_hot import NUM_DIGIT
+
+(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+FLATTEN_DIM = 28 * 28
+TRAINING_SIZE = len(train_images)
+TESTING_SIZE = len(test_images)
+
+trainImages = np.reshape(train_images, (TRAINING_SIZE, FLATTEN_DIM))
+testImages = np.reshape(test_images, (TESTING_SIZE, FLATTEN_DIM))
+print(type(trainImages[0]), trainImages[0].shape)
+print(trainImages[0])
+trainImages = trainImages.astype(np.float32)
+testImages = testImages.astype(np.float32)
+print(trainImages[0])
+trainImages /= 255
+testImages /= 200
+NUM_DIGITS = 10
+
+trainLabels = to_categorical(train_labels, NUM_DIGITS)
+testLabels = to_categorical(test_labels, NUM_DIGITS)
+print(train_labels[:5])
+print(trainLabels[:5])
+
+model = Sequential()
+model.add(Input(shape=(FLATTEN_DIM,)))
+model.add(Dense(128, activation=relu))
+model.add(Dense(10, activation=softmax))
+model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
+model.summary()
+tb = TensorBoard(log_dir='logs/lab70', write_graph=True)
+model.fit(trainImages, trainLabels, batch_size=32, epochs=20, verbose=1,
+          callbacks=[tb])
+
+---------------------------------------------------
+predictLabels = np.argmax(model.predict(testImages), axis=-1)
+print(predictLabels[:20])
+--------------------------------------------------
+from matplotlib import pyplot as plt
+def plotTestImage(index):
+    plt.title("[%d]Test test image: %d" % (index, test_labels[index]))
+    plt.imshow(test_images[index], cmap='binary')
+    plt.show()
+plotTestImage(1)
+-------------------------------------------------
+import pandas as pd
+pd.crosstab(test_labels, predictLabels, rownames=['label'], colnames=['prdict'])
+----------------------------------------------------
+compareTable = pd.DataFrame({'label':test_labels, 'predict':predictLabels})
+error7_2 = compareTable[(compareTable.label==7) & (compareTable.predict==2)].index
+----------------------------------------------------
+for e in error7_2:
+    plotTestImage(e)
+
+
+lab71_generate_bmi
+
+import csv
+import random
+
+
+def calculateBMI(height, weight):
+    bmi = weight / ((height / 100) ** 2)
+    if bmi < 18.5:
+        return 'thin'
+    elif bmi < 25:
+        return 'normal'
+    else:
+        return 'fat'
+
+
+with open('data/bmi.csv', 'w', encoding='utf-8') as csvfile:
+    csvfile.write('height,weight,label\n')
+    category = {'thin': 0, 'normal': 0, 'fat': 0}
+    for i in range(30000):
+        h = random.randint(110,220)
+        w = random.randint(55,65)
+        label = calculateBMI(h, w)
+        category[label] += 1
+        csvfile.write("%d,%d,%s\n"%(h, w, label))
+print(category)
+print("generate OK, check directory")
+
+
+
+lab72_keras_bmi
+
+import pandas as pd
+import keras
+from sklearn.preprocessing import LabelBinarizer
+from keras.callbacks import TensorBoard
+from keras.models import Sequential
+from keras.layers import Dense, Input
+from tensorflow.nn import relu, softmax
+
+csv = pd.read_csv('data/bmi.csv')
+csv['height'] = csv['height'] / 200
+csv['weight'] = csv['weight'] / 100
+
+encoder = LabelBinarizer()
+transformedLabel = encoder.fit_transform(csv['label'])
+print(csv['label'][:10])
+print(transformedLabel[:10])
+
+test_csv = csv[25000:]
+test_ans = transformedLabel[25000:]
+
+train_csv = csv[:25000]
+train_ans = transformedLabel[:25000]
+
+test_pat = test_csv[['weight', 'height']]
+train_pat = train_csv[['weight', 'height']]
+
+model = Sequential()
+model.add(Input(shape=(2,)))
+model.add(Dense(10, activation=relu))
+model.add(Dense(3, activation=softmax))
+model.summary()
+model.compile(loss='categorical_crossentropy', optimizer='sgd', metrics=['accuracy'])
+
+tb = TensorBoard(log_dir="logs/lab72", histogram_freq=1, write_graph=False)
+history = model.fit(train_pat, train_ans, batch_size=32, epochs=200, validation_data=(test_pat, test_ans),
+                    callbacks=[tb])
+
+score = model.evaluate(test_pat, test_ans, verbose=1)
+print(score)
+
+
+
+lab73_keras_cnn
+
+from keras import Input
+from keras.models import Sequential
+from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten
+from keras.datasets import mnist
+from keras.utils import to_categorical
+from tensorflow.nn import relu, softmax
+
+model = Sequential()
+model.add(Input(shape=(28, 28, 1)))
+model.add(Conv2D(32, kernel_size=(3, 3), activation=relu))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Conv2D(64, kernel_size=(3, 3), activation=relu))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Conv2D(64, kernel_size=(3, 3), activation=relu))
+model.add(Flatten())
+model.add(Dense(64, activation=relu))
+model.add(Dense(10, activation=softmax))
+print(model.summary())
+model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
+
+(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+train_images = train_images.reshape((60000, 28, 28, 1)).astype('float32')
+train_images /= 255
+test_images = test_images.reshape((10000, 28, 28, 1)).astype('float32')
+test_images /= 255
+train_labels = to_categorical(train_labels)
+test_labels = to_categorical(test_labels)
+model.fit(train_images, train_labels, batch_size=32, epochs=10)
+score = model.evaluate(test_images, test_labels)
+print(score)
+
+
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md
+
+https://github.com/openvinotoolkit/open_model_zoo/tree/master/models/public
+
+https://arxiv.org/abs/1706.03762
+
+
+
+
+
+cd logs
+tensorboard --logdir=lab72
